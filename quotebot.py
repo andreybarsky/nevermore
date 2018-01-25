@@ -233,7 +233,7 @@ async def on_message(message):
                 name = message.author.nick
                 if name is None:
                     name = get_name(message.author, serv)
-                greeting = random.choice['hi', 'hello']
+                greeting = random.choice(['hi', 'hello'])
                 msg = '%s %s' % (greeting, name)
             elif 'cast bot' in cmd: # a dominions in-joke
                 msgs = ["cast what now?",

@@ -3,7 +3,6 @@ from xml.dom import minidom
 import os
 import random
 import datetime as dt
-from quote_utils import to_filename
 import platform
 
 def prettify(elem):
