@@ -50,7 +50,7 @@ def generate_message(chain, seed=['END'], count=100):
     print('Making markov chain...')
     finalmessage = ""
     attempts = 0
-    while len(finalmessage) < 15 and attempts < 50:
+    while len(finalmessage) < 20 and attempts < 50:
         if len(seed) > 1:
             seedl = [x.lower() for x in seed]
             message = ' '.join(seedl)
