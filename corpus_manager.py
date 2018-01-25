@@ -15,7 +15,7 @@ def write(msg, server):
 
 def server_chain(server): # create transitional probability matrix for server log
     filename = cdir + to_filename(server) + '_corpus.txt'
-    with open(filename, 'r') as f:
+    with open(filename, encoding='latin-1') as f:
         corpus = f.read().lower()
 
     #remove uninteresting lines:
