@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<bot_testing_server_tagbank>
+  <user name="boing">
+    <tag>hitler</tag>
+    <tag>stalin</tag>
+  </user>
+  <user name="nevermore">
+    <tag>hitler</tag>
+    <tag>a big dumb bot</tag>
+    <tag>a</tag>
+  </user>
+  <user name="andrey barsky">
+    <tag>dumb shit</tag>
+  </user>
+  <user name="monkey">
+    <tag>hitler</tag>
+  </user>
+  <user name="nuclear monkey">
+    <tag>hitler</tag>
+  </user>
+  <user name="everyone">
+    <tag>hitler</tag>
+  </user>
+  <user name="andrey">
+    <tag>self quoter</tag>
+    <tag>self tagger</tag>
+  </user>
+  <user name="test">
+    <tag>Testtag</tag>
+    <tag>testtag</tag>
+  </user>
+  <user name="nobody">
+    <tag>a big stupid tag</tag>
+    <tag>anotherstupid tag</tag>
+  </user>
+</bot_testing_server_tagbank>

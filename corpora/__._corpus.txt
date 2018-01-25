@@ -1,0 +1,1264 @@
+hi boing
+hello bot
+.tag nuclear monkey | hitler
+tag added.
+success
+.q add decrepus if my tags and quotes dont import i am going ai on discord
+quote added.
+.q
+.q <#372490951391838221>
+no quotes found for that user.
+i have not implemented that functionality yet
+.q decrepus
+[1/1] (24/01/18 22:40)
+decrepus: if my tags and quotes dont import i am going ai on discord
+.tag decrepus decrepus
+tag added.
+now scrape all of the quotes from the irc bot
+thats phase 2
+don't worry, i will now backstab marignon, giving your roboself the edge it needs
+only for atlantis to stab me
+and then around it goes
+its hard out here for a lizard
+<@233383745779007499>
+.tag nevermore never hits a shadowraze
+tag added.
+power overwhelming
+robot shat?
+did ai ragha already attack you?
+i will at least import every kevin quote
+wooo
+.help
+commands:
+.q add <name> <quote>: add a quote to someone.
+    or: .q add <long name> | <quote>
+.q <name> [<idx>]: retrieves a random quote from someone, optionally indexed by a number.
+.tag <name> <tag>: adds a tag to someone.
+    or: .tag <long name> | <tag>
+.tags <name>: shows the tags for someone.
+.tagged <tag>: shows everyone with this tag.
+me and lemuria are still dancing on the knife's edge of that final, climatic battle.
+that looks...aggressive
+i will give it a go
+try to find jag tribe asap so you can use their shamans to make jag toads imo
+woodhenge also suffice
+i do not like the look of the toads, they are disgusting to my sight
+but i can't think of anything else in ma that is calling my name to play
+great feature: assuming you somehow live to conj 5, wayob can all make monster toads for 2 gems each
+tfw your mage refuses his scripting and decides to cast mind burn over and over again on mindless units
+scraping irc quotes is going to be tedious and error prone.
+forget the existing quotes imo
+help! im being stabbed in the back by the worlds smallest knife (also i am obese)
+a new beginning for goonkind
+is it up
+i can probably get like 2-3 more people to play idk
+.tagged hitler retard betrayer
+hitler retard betrayer: nobody.
+i want to be ma machaka
+i have the brain damage
+fresh opportunities abound.
+ok bugsquash i deserved that
+dunno, not sure if foolofsound even lives
+i am taking those back tho
+ma machaka is great
+extracting data from skybot without access to the underlying instance is a bit of a pain apparantly
+play them, lose quickly, never get into the micro heavy late game
+bing bong so simple
+i was gonna write an irc bot that just spams the irc with skybot commands
+might be easier to just manually .tags people who are know active discorders
+wtb hoburg faction of money grubbers
+every mage is a master alchemist
+and dumps them into nevermore's xml
+i won a blitz as them with a random press r and start god
+oh skybot also replaces names in peoples letters with weird symbols
+yeah fuck scraping that
+they will never cast mind burn on mindless conot i think
+i might be wrong on that but p sure they will not even try
+.tagged the new samog
+the new samog: nobody.
+.tag samog the new samog
+tag added.
+:)
+good bot
+bad bot
+how are you handling image tags
+just urls, or will discord try to interpret them
+it has an internal cooldown on ancillary messages like that so it doesnt spam the chat <@178868273935417344>
+:(
+but it does respond to bad bot.
+lol
+remember to import homero functionality
+i have no idea how images work
+hm i might play a blitz today
+let the chat ring with 'i think you mean animã©'
+...wait i have like three turns to finish probably
+ma?
+ok i think i got 1 or 2 of my retarded dominions friends to play
+first i have to make it shame self quoters
+i wanna be ashdad
+im also trying to implement arbitrary-order markov chain functionality from scratch
+jesus christ
+but now its at least logging this chat to create a corpus
+ma machakas pretender roster
+is so bad
+this is 2018
+oh yeah
+it is
+it should be logging all chat messages to an aws lambda then using natural language processing to spit back nonesense
+ma
+you want recurrent neural networks right
+so we have ashdad
+machaka
+@conot you joining up
+that'll be 4
+<@!160127200803160064>
+it might actually be easier, i've got a lstm written in tensorflow somewhere already
+serverless, baby
+i took slow aging bless so all of my sacred old mages are spry young 30 year olds
+also fyi the latest cool trend is edge computing
+wtf is that
+too bad i got fucked in the ass by tien'chi!
+yo
+i'm joining
+well we had cloud computing, which was mainframes
+now we're back to edge computing, which is local pcs
+i may just be abysia again ugh i am so indecisive
+so
+'normal computing'
+we're on
+'computing'
+disruptive.
+and so the remote -> local -> remote processing cycle enters it's fourth or fifth iteration
+the ubiquitous cloud computing craze may not be long for this world if venture capitalist peter levine is right. the andreessen horowitz general partner said that as more computing capabilities move to so-called "edge" devices, including anything from driverless cars and drones to the boundless devices that make up the internet of things (iot), the cloud will slowly evaporate.
+technically markov chains for text generation are a form of natural language processing.
+the cloud isn't real
+aws lambdas are basically rpc all over again
+i dont want an internet of things
+i just want an internet on my pc
+can someone try connecting to make sure it works
+100.34.123.193
+port 7777
+it works
+your pc is a thing bithc
+you can judge whether or not a person works in it based on how they respond to "the internet of things"
+thank you based extremely huge heavy cav provinces
+if it's a scowl or a cringe, they are it
+for protecting me from the terror of scales patala
+lmao
+if it's a gleeful laugh at how many security holes these fucking things have, it's a qa
+ill be marignon
+40 turn cata?
+i had guys on manlifts updating our lightning fixtures
+is the internet of things when a criminal can hack my fridge
+yes
+theres legit a throne
+and then a chain of 3 heavy cav province
+because the piece of shit lights had a nasty hole
+stopping patala from rushing me
+l m a  o
+and were trying desperately to go join a botnet
+lol
+random events common, enabled story events because why not
+and on the other side of the chain of heavy cav
+is another throne
+jsoh is this in la nights
+ye
+self replicating lightbulb based botnets are the future
+if so be assured i am not rushing you
+peace in our time
+yeah you cant fucker
+i have no opinion on cata
+heavy cav to the rescue
+if i wanted i probably would be assassinating the commanders r/n
+peace in our time
+i have just walked over all of the indies and lost two total troops so far
+though i honestly did not check this turn
+so it may have increased to three, or even four
+.q add jsoh thank you based extremely huge heavy cav provinces
+for protecting me from the terror of scales patala
+quote added.
+la owns its turn 5 and i have as much income as my turn 25 rus
+jsoh you should fight ctis imho
+my provs are poor as shit and terrible
+oh scales patala
+mine are absolutely fkin atrocious mainly
+i get it.
+i am the historical vikings who will be unruly and invasive because we live in a shithole and you dont
+literally 1-3000 pop garbage
+saem
+i have three chokepoints sort of
+i was going to immediately attack the person above me
+but im also not gonna get more than 12
+but its the one fucking nation that can hurt me
+so rip
+i fucked up my expansion twice
+lol
+alright start uploadin' pretenders
+because its heavy cav everywhere wtf
+done
+lol if you lose a single troop to heavy cav
+or take an affliction
+wtf boing why are you taking provinces so close to my cap then
+boing please do not say things like this to thirsty scales patala, the brutallest nation
+bugger off with yuor dog
+which thirsty is this
+all
+boing is my natural ally. our dogs will sniff eachother and be fast friends
+all kinds
+i have seized the high value provinces that are not my cap circle
+also done
+ill join if you timetravel 2 hours nito the past or make me have the day off tomorrow
+with my powerful dog, while my idiot lizards smash into the same heavy cav province over and over again
+are you doing the thicc lizards
+because uhh
+any nation that is even slightly worse than me is a natural ally
+dont send them at heavy cav
+the others are foes from the off
+im going to get an early throne with tien chi, or ruin my expansion
+literally 100% of the provinces in my cap circle are heavy cav
+scales patala vs the world
+wooow
+im just hoping one of these swamps has an exposed gold mine or some shit
+alas
+4 people in
+i think la ctis with fucked up expansion is maybe even weaker
+or im going to be fucked if my third neighbor can also resist me
+who we waiting on
+also epic that i am next to the lighting bird throne that i will never take
+no he has lazer dog
+my pretender is done
+yes the dog is powerful
+oh you ahev a server up
+i would have already attacked him if he didnt
+im joining now
+<@96715337440952320> i am excited to hear how your patala does
+did you make a carto map
+rando
+not good i think but mercs are very useful for taking provinces for other people to take eventually
+i will predict meksivik
+dead by year three
+@ me when turn 1 is up
+scales patala wins by not being the first eliminated
+if you die before scales patala, just remember that you are worse than that
+ie every other monkey faction in that comedy awful dom 4 game
+last call for blitz we got 5 ready to go
+lanka and quadbless kailasa no match for the chakram
+wait monkey you are totally in 172 rite
+lemme know when you are ready cryle i think we will start when you are done
+i don't know what 172 is
+im not looking at it i am work
+a forest with three river connections
+no two
+oops
+ready
+if it's a really fucked up piece of shit area with forests and swamp and rivers all over yeah that sme
+i clicked on something or pressed something once that made a popup of province info appear with like a little paragraph of what the land type is and what connections it has
+and have not been able to find it since
+!details lanights
+
+will take a second to generate and download map
+who is agartha
+also, guess what scales i took as utgard
+cold 3? lol of course not
+why do that when i could take heat 2 for 40 extra points? this plan could not backfire horribly as i am stuck in the middle of the fucking forested riverlands
+can laserdog take this province
+that province looks scary
+also very rich
+extremely.
+that looks alarming
+look at all those towns
+is that hoburgdorf
+that province is probably worth more than half of my land
+all together
+did you use carto
+at alt4 he can do it probs
+i have a longdead/ghouls/longdead horse province in my cap circle
+its extremely sad
+no just random
+or if you attack from a lot of candles
+it has 3 of his candles
+im gonna do it from 2 candles.
+everyone recieving the map image okay?
+lol if your cap circle isn't pretty much solid longdead / ghouls / shit hole swamp
+its in a forest so i think i might send a serpent priest along with my prophet to banihs it
+i got them high upload speeds
+for ez site search
+it could go bad if they heroically do not route
+yeah, got it
+it actually went fast for the first time ever
+leave laser dog in the very back corner and let the cav come to her probably
+i will stand in one corner of the map so that if i rout i can waddle to the edge of the map
+yeah
+i got a second monitor rdy to go for maximum dom blitz chat
+i recently got real human internet speeds
+oh and people were saying lances are fucked up again
+hmm i guess i can send a theurg too
+multiple megabits
+on the cyberspace
+to try to find siteafter slaying million skeletons
+can someone test and see if they reintroduced the lance charge bug by capping lance bonus based on str
+still downloading here
+cause that would be illwinter as fuck
+whats the bug
+light lances were getting full charge damage every turn supposedly
+maybe also real lances?
+lol
+blank screen for me after selecting my nation
+i didn't test and it's from idiots so maybe they are wrong or running an old version
+it made cav nearly worth 46 rec each
+indie strength set to 4, magic site rarity upped to 60
+dling map image
+i'm not 100% it was true
+i think i in now
+soon to be dling winter map image
+the new bug jbrereton
+from this version. someone with the game take light cav sacred and attack into heavy cav
+and look at log
+i will probably see this in a turn or two in surrounded
+aka game of slander and recriminations
+i jsut tested with 13 barbarian heavy horse
+and none of them hit somebody more than once with a lance
+what about light lance was it getting charge every time
+that's the one they capped
+they capped both
+lance is strength extra as cap
+light is half strength as cap
+does that make xibalba spearbats really bad
+<@120675876043096066> lets do this
+everyone in their first turn?
+does that bless help if they are recruit as elderly?
+yes but they were already much worse than club ones
+just about to take it
+still dl'ing
+ok odne
+it made them more bad than they already were
+on winter image mukip?
+yeah
+im in
+ok light lance is not hitting any extra charge bonuses
+just being used as a regular weapon after charge
+ok good i will call this person a retard
+oh lmao
+it's zonk
+:zonk:
+were they specifically talking about sacreds
+b/c im just using barbarian light horsies
+maybe its broke for sacred
+can you just copy the text of his post
+light lance is the same weapon used by everyone pretty much
+and first done done :toot:
+<@120675876043096066> where ya at
+ya weapons is weapons
+ma blitz - ashdod, xibalba, marignon, r'leyh and machaka
+taking bets now
+rlyeh because it will put up bot and assassinate everything until everyone goes ai
+send me your bitcoins giving 10:1 on xibalba
+yeah its jsut
+depends how old
+sometimes
+mekone, though, no
+5 bonus damage on the charge and nothing else special at all zonks a dipshit
+grats to the guy who presumably started next to what appears to be no less than 10 farmlands
+its kind of silly that after a dude misses his charge
+i hope someone started at 18
+, 3 times ,
+ashdod wins hands down
+just farmland farmland throne farmland
+his next try has 5 bonus damage
+awake quickness blood surge done
+oh i thought it lost the damage bonus if you miss
+nah
+haha
+you keep the bonus damage until you hit something
+just waiting on <@120675876043096066>
+not all bad though, i started with construction 1
+i started with
+conj 1 enchantment 1
+not bad
+thaum, conj, alt, evoc and constr 1
+will prophetizing a holy 2 guy get me a better prophet, r do they need h3
+h3
+h2 will just become a h3, h3 will become a h4, etc
+i bet all of my bitcoins on them, and if they do not win i proclaim them bad
+h3+ = +1 to holy
+jerek is in a different game
+<@!169456837236621312> jokes on you
+they're probably gonna stale!!
+which is impressive, in a blitz
+.q add boing im the best
+.tags boing
+what the
+what is their password
+they are running next level advanced strats
+gimme all your bitcoin nuclear
+hah
+that involve more than bless attack close
+he said he would be here but alas
+lmao
+destroyed
+a powerful feature
+just messaged him
+the blitz curse strikes again
+wonder what their bless is
+our contenders
+nevermore is a good quote bot name btw
+ban jerek
+hes a good bot
+jerek, playing dolphin
+i am going to call him
+ok i tested the exact situation zonk is claiming to be bugged
+strong epithet game
+and the result is: zonk is a retard
+incoming
+wooooo
+curse broken
+did u take uttervast
+and sink all of your points in
+uttervast is a pro ma strat
+also somewhat appropriate??
+uttervast is a fucking badass and if you make me play ma rlyeh i will run uttervast 100% of the time
+time to dive into the exe to feature all the epithets from the water margin
+sorry for the wait, everyone
+it is okay friend
+also a death 10 prince of death casting pale riders makes a fucking lot of skelemans
+fear bless good
+my favourite epithet has to be "the afterthought" in between "prince of arcane mysteries" and "the invincible and ever-triumphant""
+b e v e r a g e
+how many are we talking
+a nail biter for sure
+as a potentially interested pale rider caster
+41
+hmmm
+replied, the other d10 pale rider future caster
+what wonders await us in turn 2
+45
+really it's supposed to be 20+++
+prince of death has reanimation bonus
+oh
+i have ring of sorc and could amulet of the dead it
+
+so could prob hit 45
+hmm
+im not going to try that hard im just going to make 41 skeleton horse per turn until death gem is less than 10
+did the turn go over
+wow
+y
+that was an offensively bad return for site searching spells
+and xibbalba is dead to me for no gimmick name
+they have 10 mr too
+overpowered
+the game has turned
+!details
+
+and ragha also attacked me lol
+a proper skeleton, with a light lance is indeed strong
+oh darn it
+i forget every game
+a blitz with an uw nation
+ok then
+ill do it
+ea rlyeh
+just like
+we'll forget you
+i will play for probably fifteen turns
+when we crush you underfoot
+and then i will just stale the rest, because i won
+so long as i get to be ea pan i will play in that game which will be over in 15 turns
+man when i was in that game as ea r'leyh i was so confident i wouldn't be the first to die
+jbrereton i have developed entropy two point zero
+noooooo
+my start sucks why did i start in a wasteland
+hmm
+p much a time trial between bot going up and pan throne win
+instead of n he has e
+a province has '8 light infantries' and thats it
+i bet this is not a trap
+show me entropy god
+is it an uttervast
+my start sucks why did i start in a wasteland
+its a master lich with air and death and earth
+oh ok
+powerful
+the best part is taking all of your death bless and converting it to undying
+so you can expand better
+do not try to cast fields of the dead with it
+you will get as triggered as i did
+it's bugged are they ever going to fix it
+when your ench 9 spell literally doesn't work
+it used to be ultra howl
+ya
+i can confirm that quickness increase the number of attacks per round more than 2x (as it is supposed to) in fact it seems like it is exactly 4x. i discovered that, because i had given my pretender sc items enough to have reinvigoration 6, and since her encumbrance was 3, she should have been fatigue neutral (actually decreasing in fatigue by 1 every turn because of the hidden 1 reinvigoration that all units get) after casting quicken self. 
+she was not at all fatigue neutral and reached fatigue 100 before the battle ended. so i had a closer look at half speed. she attacked 4 times for each time reinvigoration took effect and she attacked 4 times as often as her enemies…
+is that actually true
+who tested this
+kris lighthawk
+eh
+ashdod
+oh wait
+no
+lmao
+yeah i dunno
+that sucks
+i bet she had two weapons
+that is fucked up if true but i'm not sure how true it is
+what is the weakest sacred i can put quickness on
+sadly the battle replay being incredibly short does not help with debugging this stuff
+vestals?
+flaggelant
+yeah flags
+skopetsy
+skopetsy.
+also cap has 4 pco connections in total one of which is a throne
+would be another alternative
+fml
+vestals have like 9 strength dont they
+yes
+flags f7w10s8 flags
+flags!
+they train in gymnastics but 10% less than a normal man
+machaka what the hell
+sorry to those who bet on marignon
+my money is always on the fiery justice
+it was probably fucking
+i bet heavily on r'leyh
+jerek did you take the correct bless
+cold or hot outside and the guys just a retard
+namely, w10
+fuckin'
+machaka
+<@233383745779007499> trap sprung i have no idea what i'm doing lmao
+it's grating that there is still no battle odometer and the replay window gets full from 2 attacks
+so testing this stuff is actually not even simple
+ok so ayar has
+3 encumbrance
+3 reinvig
+me nether i am just makin' toads
+do they not get double from flying
+if i give him quickness bless and 2 reinvig bless he should be neutral
+encumbrance wise
+right
+at leats i seduced a throne sorceress
+i am next to a level 3 throne with 300 units and a monolith
+alert
+i think he will go up 6/turn maybe
+it had a pyromance.r and he has red gems
+r i p
+because it's 6 encumbrance twice
+its ok i sent a scout
+i know the bullshit when i see it
+swordsmen or pikes?
+i might be wrong about fly enc double thing
+he got well above 6
+<@!169456837236621312> the ashdod is me
+well how fast does a regular thing accumulate fatigue
+try to forge weightless chain for them jsoh
+like a 3 enc guy, no quick with 3 total reinvig
+and other means of getting to less enc
+3 enc guy with 3 total reinvig is neutral
+theoretically. has anyone actually looked
+his melee encumbrance is 3 and he has 3
+i do not pay that much attention
+well, 5 reinvig
+ya but jsoh i think fliers get double but not listed
+did you take quickness bless
+he doesnt fly
+oh right
+.q "); print "i didn't escape user input properly"
+for some reason thought ayar flew
+awww
+i did not, sadly
+hes the guy whos gets power from not flying
+ok he attacked once
+then some enemies attacked
+then he attacked again, etc
+hes not double turning at all
+lol somebody outbid me for the markatas
+quickness = attack twice at the same time
+i bid 99 on a 40 gold merc
+well, hes not doing that
+repel seems to be giving him fatigue
+wait repel does that?
+give him a mighty e n c h a n t e d  p i k e
+and now it can't
+how hard is it to keep track of a kraken
+smh
+hes got a length 4 weapon already on account of being tall
+then who the fuck is repelling him
+or is he tired from repelling other
+ye
+hes getting fatigue from knocking arms off while repelling swords it seems
+ew repel making you tired means long weapons are bad on thug
+im going to try with a dagon
+but hes not fucking double attacking literally ever
+oh fuck i lost a battle
+woof
+because machaka has the worst archers in the game, because they trick you into thinking they're not
+do a w10 thing with length 0 weapons
+machaka is p bad
+like a dragon
+the enemy things are getting in hits
+build them big old spiderman
+or attempts at hits
+before he is
+theyre more expensive than fants
+dragon ahs too many attacks im not smart enough to follow
+wow fuck that was way more of a gamble then i thought
+or just do uhhh
+the dwarf land thing
+couldn't see the hydro or the sea trolls at all
+linnorm
+<@!160127200803160064>
+wow
+my scorpion king has a chest wound, are his days as an expander over
+oh lmao no wonder
+its a 14k pop underwater province
+trying with erf snake
+i am doing this with dagon and i can only say "results inconclusive"
+haha i can't believe it actually worked
+fucked up
+q "); print "i didn't escape user input properly""
+nah it'd be like
+q "); print "i didn't escape user input properly"
+space after close quote it didn't liek
+doesnt seem to be doing anything
+are you broken
+hi bot
+lmao does cold blooded get fucking penalties for it not being h1
+yes
+yes
++1 for neutral
++1/4/7/10
+being a lizard sucks
+the corpus logger is fine though
+.q " ); print "i didn't escape my user input properly"
+hmm
+the discord api parser is smarter than i am
+erf snek is gaining fatigue too
+did it not allow that
+with 2 encumbrance
+and 4 reinvig
+no repels
+ok quickness is definitely working in terms of 2 attacks/round
+how about no quickness
+(or at least 2)
+he should be dropping fatigue
+like just enc2 reinvig2
+is it actually neutral
+he should be better than neutral
+ill see
+it may just be reinvig is slower than attacks
+and quick makes it twice as bad
+i think reinvig is only 1/turn
+ya
+if i knew discord or really coding at all i could probably do something nefarious
+but :effort:
+reinvig inc 1/turn natural reinvig is one per turn
+whereas attacking twice incurs 2 fatigues
+yeah
+highest is aw his fatigue at was 11 tho
+doesnt make sense
+nooooooo
+they are tough
+and sacred
+dagon was at 9 fatigue after double attacking/casting temper flesh at start of fight w/2 reinvig bless and standard +1
+if r'leyh had a better way to manage summons
+.tag conot sinister hacker
+they would be so much better
+and he double attacked quite a lot
+like, they more reliable summons
+again total lack of battle odometer is a problem here
+2 reinvig hes holding at 2 fatigue as the max
+to be fair
+regularly summoning vastnesses would be
+i think at least
+incredibly fucked up!
+rude
+.q conot is innocent free him now
+.q conot
+aww
+no like, more elder things and less stationary aquatic guys
+.tags conot
+.help
+.q add conot " ); quit();
+.help
+aww
+my coding is superior.
+.q add conot "aww"
+.q add conot " ); exit();
+i give up
+why is he trying to seduce the dude when theres a sorceress in the  province
+boing has beaten me
+.q add conot boing has beaten me
+.tags conot
+.q add conot "boing has beaten me"
+destroyed
+.q add conot .q add conot " ); exit();
+i give up
+boing has beaten me
+.q add conot boing has beaten me
+lol it doesnt like it
+.q add conot i give up
+boing has beaten me
+.q add conot boing has beaten me
+nevermorebot - today at 12:13 am
+get a grip.
+.q conot -1
+.q add jbrereton "destroyed"
+ah theres a parser error
+.q jbrereton
+there we go, suicided the uw mercenaries
+.tagged self tagger
+stay out of my shit
+.tagged self quoter
+how fucking bad does this robot look on mobile
+turn it on first
+ok i mdone expanding
+idk probably bad because mobile makes everything look bad
+im happy with these 3 provinces. good shit.
+hello xibilba, who are you
+oh wow its tuen 8
+ok its not so bad
+the other robot looks insanely ass
+yeah it's
+very terrib;e
+even if i turn my phone sideways
+if your diplomacy is more than an unannounced entry into their territory you do not understand blitz
+now the bot is more sensitive if you call him bad
+not naming the robot after a cia/nsa surveillance op is some shameful shit tbh
+hello friend
+i see your virtue
+if you come and slay me then nobody will ever be able to stop r'leyh
+piot
+make the bot ignore conot
+[6:17 pm] jsoh: not naming the robot after a cia/nsa surveillance op is some shameful shit tbh
+good point. name the bot discord
+im working on functionality to make the bot selectively ignore people it doesnt like
+.q add jsoh not naming the robot after a cia/nsa surveillance op is some shameful shit tbh
+samog - today at 12:18 am
+good point. name the bot discord
+damn i gotta turn that off
+.q jsoh
+make everyone use compact mode
+solar weapons triple damage against demons/undead also triples the targets fire resistance. for example, solar weapons used against demons with fire resistance 10, roll -21 + drn vs half armor (armor piercing) + drn. instead it should be rolling -1 + drn vs half armor (armor piercing)+drn. the fire resistance is tripled along with the solar weapon 3 ap attack.
+so all of the quotes look like this
+person a: setup
+person b: punchline
+lol what jsoh
+that's a great bug
+i dont know how to even parse this
+if you add a quote that says
+person a: setup
+person b - today at 8:52 pm
+punchline
+yuo are assuming its true nuclear monkey!
+rallying against poor innocent 2d anime girls
+you should be brutally slain
+if you attack a demon with 5fr it will be 9ap vs 15 if it's true
+zonk responded to me saying hes wrong with "i was looking at multiple horsemans lance attacks"
+thats obviously just an order of operations thing
+isnt it
+but he cleverly noticed that if you miss your charge you get to try again
+so glad he was a very vocal beta tester
+.q jsoh
+i fixed it
+ty
+not if the roll says that its rolling vs 3 times his fire resist
+thats very good actually.
+good work boing.
+have a gold coin
+cool things about discord audit log: i can isolate by any user other than myself
+and it doesnt show people allowing robots in
+.q samog
+whats a good way to get demons with 5 fire resist
+lanka i guess?
+xibalba
+what did i say about the ocean
+lol my men crossed a river
+attack lanka yeah if it's true you should have some bonkers rolls
+doing like 30 damage on a swing
+and then my heat 3 set in
+and now they are trapped in a corner of the map forever
+rip
+oh in 12?
+rip
+i never even thought about adding quotes from compact mode, fuck
+actually in 1
+i gotta write a whole different parser.
+my scales got to 12 so fast i can simply never enter it
+the ocean belongs to me, and no other
+lankas troops dont have negative fire resist hey
+oh i see that
+lmao
+just commanders
+do you want me to put the edomites out of their suffering or
+does it triple fire vulnerability as well
+noooo they are my only friends
+commanders and summons
+the correct lazy answer is to mod militia to have 5 fr and be demons with no movement
+also i attacked someone who had ko oni pd
+they bought like 5 pd i dont know why
+and they routed, because there were no demon leaders, which hp routed him instantly
+we were greeted as liberators is what im saying
+lol
+thats good.
+wish we could get <@188392419635494912>  back in the game now that utgard, bringer of stale turns is banished to the void
+yomi: so bad that using their pd is worse than having 0
+alas
+!details
+
+.tags conot
+it does not appear that that thing the guy said is correct
+what the fuck am i doing
+vs asara , 3 prot 5 fire prot
+my roll is -6 base
+for solar weapons
+oh hey i killed someone
+who was it
+was it me
+oh no
+who has merrow captains. famous merrow captains>
+is that what it should be im way too dumb for this
+it was a merc lol
+jesus
+did you really
+hahahaha
+what pd did you put in that
+its -6 vs +1
+the rolls
+60 or so?
+(get baited, etc.)
+also that fucking assasination attempt is :negative:
+fuckin' illithid lord with super deadly mind blast opts for holy word 8 times
+nice
+which guy was it
+oh shit
+the uttervast is up
+jaguar warrior vs asara
+oh shit
+the uttervast is up i see
+2d girls are now real is now real, yes.
+jaguar warriors solar weapons bless asara minor fire resist
+so is the shark night :black101:
+if you hit them it should be 9ap fire vs 15 fr if he's right
+the roll is alwys -6 vs +1
+is that how it does it. just subtracts fr from damage
+9 - 15 = 6
+pretty fucked up
+illwinter as heck
+hmm
+yeah maybe its that lmao
+https://puu.sh/z9020/6a4bc9fcf3.jpg
+bug is real
+the +1 on asara side is i guess their 3 natural prot rounded down
+things are heating up
+ironic, given the throne of winter is nearby
+did you like the shark knight
+thats a bizarre way to show ap damage
+<:illwinter:372894192894214176>
+no
+it does not matter
+i was just knocked out of the game by ashdod
+regardless of everything else that has happened
+lol why
+fucking
+ashdod beat me
+with blood bond
+oh the skeleton was your god
+rip
+cant believe you would <:mindless:372893818397130752> me like this
+???
+im sorry im sorry im removing it
+you and xibalba both moved on same province at same time
+and you accidentally his god
+oh yeah
+you can recall him
+he will maybe be stronger
+guys i think xibalba might be a bad nation
+i mean
+you were running circles around me there till things went tits up
+.q
+.q acoustickitty
+i love abusing mercs to shit up the hof
+poison is not effective vs giants
+i have very stupid bless giants
+not much is effective against them
+meksivik this is ma right
+did you make the mistake of recruiting a toad
+
+instead of all the bats forever
+.q kevin
+i did
+i am a fool
+.tags jonjoe
+.q jonjoe
+fucked up
+oh hey its marignon
+hi marignon
+hes a day old, what do you want
+hey guy
+maybe if you were cool and funny like me you would have some quotes
+.q add jsoh maybe if you were cool and funny like me you would have some quotes
+marignon i have been betting on you this whole time
+if this is the game you wish to play xibalba
+wow rude
+assassins are really beyond the pale machaka
+samog dota
+bot is going to sleep but i will find somewhere to host it permanently
+once i have implemented some new features.
+man my luck with summons this game has been awful
+and this is with a 10 summoner
+it takes like
+2-3 turns
+to get an anything
+its pure rng as i understand it
+dude
+3 luck 3 death is really fucking good
+who is machaka
+i should od htis more
+i posted the whole thing yesterday
+im machaka
+jonjoe you cheeky fucker trying ot make demands when you have no longbows!
+ok lets try this
+.q
+.q -1
+nice
+does it have all of the irc quotes
+it does not
+not yet.
+im looking into irc scraping
+it would annoy everyone who is left on irc for several hours
+can't you ask the guy who owns the bot to just send you the data
+the two dozen enraged lurkers meme
+who owns the bot?
+that would be much easier if possibl.e
+probably a hero.
+ask samog to ask the guy who owns the bot
+samog is the robot interface guy
+if you want something from the robot guy: ask samog
+http://www.bbc.co.uk/news/world-europe-42805485 checks out
+<@110869804197351424> who owns skybot/homero
+thats not really how it works
+you just say "samog get the homero or sky bot guy to send me all of the quotes from the robot please"
+ok samog i said that
+full service robat interface guy
+i didnt know if some goon wrote them
+also all the tags would be good
+who are the robot's wealthy backers. how far does samog's influence reach
+skybot -> samog -> ??? -> the deep state?  (benghazi anyone?)
+release the memo.
+.q add mu who are the robot's wealthy backers. how far does samog's influence reach
+new messages
+mu - today at 11:04 am
+skybot -> samog -> ??? -> the deep state?  (benghazi anyone?)
+.q mu
+yess, good bot
+no wait
+what
+it worked on test
+killary's drone programme extends to irc it seems
+
+why would the parser work differently on my test server
+oh its something to do with cases. im baffled by this bug
+.q add boing " ); rm *
+.tags conot
+.q boing
+hmmmm
+one day i'll get you, gadget
+by all accounts this should work
+.q add mu who are the robot's wealthy backers. how far does samog's influence reach
+new messages
+mu - today at 11:04 am
+skybot -> samog -> ??? -> the deep state?  (benghazi anyone?)
+.q mu
+what the heck.
+.q add lowtax dominions is pretty cool but i prefer stellaris
+.q lowtax
+does anyone who knows computer things know why i would get different behaviour from entering the same command on two different discord servers.
+
+is it case sensitive
+no, i checked
+*turning up w/ tray of cups of orange squash and some digestives* everything fine with this game? did the map turn out okay in the end?
+no mictlan is being a dork
+i want to keep testing in this chat because it's the only place i get this bug.
+!details
+
+wait wrong game
+yeah everything is fine
+yes the map has served well for pony supremacy
+ok one more time so i can get some debug messages, sorry
+.q add mu who are the robot's wealthy backers. how far does samog's influence reach
+new messages
+mu - today at 11:04 am
+skybot -> samog -> ??? -> the deep state?  (benghazi anyone?)
+ok i fixed it.
+string parsing is hard
+what was wrong
+when i was stripping out the '.q add' part of the full text i did it in a dumb way that split the string across any other instances of the username
+and it was a case thing
+<@!160127200803160064>
+say hi to the bot
+hi to the bot
+<@190292302785150976> sell me nature gems in la nights
+<@!148098869782118401>  sell me nature gems in la nights
+<@275205678010859520> sell me nature gems in la nights
+lol if you have nature gems and sell them to jsoh.
+its like turn 5 what do you even need them fore
+!details lanights
+
+@absum#4478 sell me nature gems in la nights
+wow it iddnt work is absum dead
+<@!169456837236621312> sell me nature gems in la nights
+<@!160127200803160064> sell me nature gems in la nights
+hi i am going to immeidately mute this channel after i say: sell me nature gems please
+dont do it
+thank you game for this naga transport device
+i'm so good at diplimacy actually
+why is it a commander goddamn
+is magic leadership the main reason why patala is bad
+fuck no i fought for this thing
+how to win any dominions battle:
+mass fligh + weapons of sharpness
+even militia will murder everything w/ that combo
+they wont kill the mass flight fog warrior army of gold vanheres
+fair
+ichtyids are literally the worst
+so probably
+yes they will
+because there will be like 5x as many
+and everyone is dying to magicks at that point anyway, so a ponyman will get zapped just as easily as dumb human
+!spell weapons of sharpness
+<@255835336083636234>: https://larzm42.github.io/dom5inspector/?page=spell&spellq=weapons%20of%20sharpness&showmodcmds=1&showmoddinginfo=1&showids=1
+where's my weapons of bluntness illwinter
+
+
+what does weapons of sharpness do? is it ap?
+ap ya
+are you meant to be able to make undisciplined units into bodyguards
+do not believe so
+
+tfw when adventurers flee into your capital and actually all survive for once
+dunno if this will actually hold up to the turn processing
+i dont even want it
+its a stupid throne. im gonna go get an even nicer throne.
+lmao jonjoe
+why did you attack an amazon province with 5 knights
+why arent you making longbow
+wtf
+!details
+
+arglbglbgl
+jsoh
+a4w10n7b4 heat ragha prepare to meet your match
+scales patala.
+those skeletons
+mmm
+spicy intel from the game im in
+surrender now friend
+!details
+
+open offer: i am selling gems! all gems must go! death gems! fire gems! natue gems! fuck em! im sellin em! 20g each!
+expensive
+im going to also fuck up next turn
+my snake is gonna get netted and destroyed
+luckily a snake cannot be net
+unless it is the serpent lord rainbow
+are cave earthquakes just double damage
+or what
+i'm really fucking salty about that loss
+if my guy hadn't been hit by divine vengeance in that other fight for 18 i'd have won it easily
+but at least i murdered one person's geared prophet
+aww, i was looking forward to getting stomped by jbrereton
+
+a bold assault.
+cave earthquake cryle is 20 ap damage
+that feel when you misplace your boar assault unit
+oh noooo
+and its what, 8, normally?
+!details
+
+good turnaround.
+if not for that hitler, @ubaten
+was he feebleminded boing
+thats a valid strategem if so
+!details
+
+i have it on good authority that god intended gems only be sold for 1 gold total
+<@170661706421370880> sorry friend, but we all know the true winner of the arena is the one who bribes the arena organizer to give you one fight against a bane lord whos already weathered 3 other fights
+it's fixed!
+i didn't bother sending a champion. didn't want to lose one of my several niefel jarls for a turn.
+also to be fair that greatsword hit would have killed him either way
+nah he took a 14 hit
+he would have lived
+shame he missed at all
+he was not, he bravely cast powerful buff spells  upon himself
+before being stabbed by a wolf tribe
+that's what the fire pearl was for
+to be fair, he never missed the wind lord
+
+just got cucked by the luck rng
+
+dom5 markov chains looking good
+lol
+skybot is scaevolus and homero is alligator boing
+what
+you pinged me
+i dont understand what you said
+are those people
+yes
+can they send me the quotes and tags from those bots for #dom4goons
+(quietly) this guy thought homero was an alligator.
+i odnt know.
+hello everyone, i'm a new member here and also a fairly new player of dominion ( 5 and 4 ), and i love the game a lot, it's really a unique take on a strategy game, and so far it's also one of the only one ive seen that centers most of it's gameplay around " religion "
+
+as such, ive decided to browse the community for all kinds of mods, and played a bit of some faction, but the one i had my eyes on before i started playing was r'lyeh, because i'm a huge h.p lovecraft fan, even though i havn't read any of his work, it's just the design of cthulhu and the other old ones that sparks interests in my eyes.
+
+i sadly realized however that r'lyeh is not that fun of a faction to play as, atleast in my opinion. i feel they lack on the " otherwordly " feature, the creatures from other dimension feel that i kinda hoped to get when playing it ( r'lyeh from la, which is the closest to the cult of cthulhu feel ive been wanting )
+
+i'm speaking of this but i've not played them that long, in fact i didn't finish the party i had going mostly because the freebie units swarmed every single of my province and i had no utility for them.
+
+as such i decided to ask someone to mod a rework / entirely new faction of r'lyeh, which would be much more centralized around being from other world, enslaving populations, nightmares, etc... which i feel we're one of the main points i couldn't get while playing them ( again i havn't played as them that long, i did maybe a 30 mins / 1 hour game before quitting out of frustration, so if i missed any of the points i talk about up there somehow, do correct me about it. )
+this guy rules.
+make him a bespoke mod, <@317410996169736204>
+he spent more time writing that post then figuring out how rlyeh played
+fuck
+so salty
+ry'leh would be cooler if it was a land nation that instead of cap-only summons had underwater-only summons
+so you want to just dive in asap
+but also, you are a land nation, and therefore, not immune to the game
+i was going to make a mod that made basically all of the water breathing items cost one gem
+for personal, and like 5 for an army
+but water is a piece of shit and the minimal effort required is not worth it
+this mod would also make fucking water things move two provs
+why would you make this a thing that you could do and explicitly make tritons and stuff slow enough where it never happens
+ya tritons should have like 35 map move
+so they can do 3 prov
+yes
+i was going to set all aquatic tritons to 3 and mermen to 2
+stuff that walks on the bottom stupidly should move 1, not faster than swimmers
+cool now just make more than 6 spells castable underwater and you have a corker of the mod
+oh also autocast sea of ice on turn 1
+was also going to add a 1f water breath item
+and change amulet of the fish to 1w
+#woah
+basically for water to be less shit the barrer between the two should be way weaker
+yes
+but also
+right there is a problem with this because
+if you reduce the barrier initially, they just gain bonus fuck up the land nation powers
+this is something me and sumwon grappled with in beta
+well they don't get better troops or more amphibiousness, just the items are cheaper to make for everyone involved
+but fundamentally "a spell so water nations can use their amphib shit on land eventually" should be in the game
+does earth power stop working if you levitate
+what does that spell do
++1e
+no the mod one jbrereton linked
+i think everyone who has played dominions for more than an hour knows what earthpower does lol
+and no it just works no matter what
+it is a global monkee
+which any uw nation can cast, and puts a site that lets them create their aquatic units as amphib ones in their forts
+and if it does down that site disappears
+that is the cleanest i could do it myself
+it might not have the right rec points for nowadays since it was made at like 4.92 as a "here is something you could already do please do it" mod for illwinter
+really intended for it to be similar to thetis' blessing but in reverse but that is not something a humble normie can code in
+summon earth power is usable by fliers and levatators cryle
+what they're actually going to do is give all the atlantis mermen [promote] and into a form that has legs and breathes air
+they are apparently doing nothing whatsoever to make uw good after the revolutionary underwater improvement patch that let ea rlyeh recruit grandmothers outside of forts
+i guess i will take that spell and incorporate it
+and spend 15 gems to make one of their mages much worse and put their astral path on land, on a 5 year max age package
+which mod was it that had acidify the oceans
+magic enhanced
+that is good shit
+ok i guess ill download that and pull in some of the fuck the ocean spells too
+because there is an extreme lack of ocean fucking in vanilla
+did it add any uw castable fire spells too or will i have to do that myself
+because fire should at least have *something*, even if it's bad
+ill probably change boil to just be fire
+and make it... not so fucking bad
+boil should be a remote attack
+steampunk human f/w nation with diving armor and they get a national discount on barrels of air
+boil the ocean as a remote and just boil as combat
+like you stand next to the water and boil everyone in the prov alive
+yes
+actually wait no, just make that a merc company
+i wanted to make boil the ocean like fires from afar except is also popkills
+because fuck the ocean.
+really
+fuck you, ocean
+is there a way to equip the summoning pretender for ma ryleh to fight greater horrors so it can get them as sacreds
+i accidentally won against a big molecule guy and it was fun throwing him at provinces
+horrors will never join you
+you can either kill them, or they kill you
+vastness is a bro
+oh dang
+vastness joins you tho
+my neighbor uttervasto
+isn't he a horror?
+no
+uterrvast is uttervast
+dang
+vastness is vastness
+horrors are like, horror, gore tide, mind slime, dream eater
+the only shared trait between horrors is they fucking hate everyone, including other types of horrors and will attack them forever
+they will never flee and must be killed
+ah
+monkee https://www.dropbox.com/s/p7j5vk2mpib68tc/landrec_d5.zip?dl=0 <- this is land rec mod for dom 5
+i remember one time my mage got visited by a pile of eyeballs and blinked for 50 rounds before walking up and kicking it to death
+which again should be vanilla functionality imo
+(adds inland recruitment for uw nations)
+those suck. the only void creatures worth a shit are elder things, vastness, thing that should not be and greater otherness
+yeah
+is it possible to have a bless build with ma ryleh
+anything is possible
+will it be good? no
+i guess when you talk abt uw nations its a can of worms
+kremath there is 1 bless build with ma rlyeh
+blood vengeance to stack on top of dr, and regen
+the only bless that matters is arcane finesse
+which you always get
+because it makes shroud into +1pen
+plus finesse ya
+are your mind blasters sacred?
+no
+no
+your only sacred is starspawn priest
+and some void summons
+also, powerfully, indie sacreds
+there should be a mod that makes it so every upgraded uw fort has an abyssal well site or something
+i think it's probably okay for water nations to not get good stuff inland
+they should get coast for sure
+but land gets shit all in the ocean too
+there is normally like 2-5x as many inland provs as water and coast
+idk
+maybe make the water breathing global cheaper/easier to cast/more paths
+yeah but as long as you make stuff on coasts you just concentrate it there and move around as needed
+like if you grab the entire ocean and every coast plus maybe a few land beyond that
+you gonna be huge, and powerful. and should be planning throne grab
+fwiw i think land nations all getting guaranteed uw stuff would be fine also
+.markov
+.markov land nations
+ok.
+fuck the ocean. land should just have an easier time of exterminating the ocean
+maybe make some amber clan if you care to
+and ignore it forever aside from income besides that
+i mean you could add indie merman scouts and maybe even w1 mages to their poptype and it would be fine i think
+but yes acid sea should also def be in the base game
+though some nations should
+like patala gets water naga
+so when you are inevitably banished to the ocean, you can make things there
+same for ma xibalba
+#selectnation 98
+#uwcom1 "consolation naga chief"
+to represent being water naga they would be grosser looking and weaker
+bobbit worms with naga faces
+agreed, no hypnotize also
+yellow bellied sea snake naga
+i like jomon where they have good troops underwater but no way of getting there
+bc they're idiots
+they can be more venomous but without hypnotize
+"after the incident, john attempted to generate money from his renown by forming a band, the severed parts, to pay his mounting medical and legal bills, although the band was unsuccessful and failed to generate enough money."
+nice
+<@255835336083636234> what did you use for hosting? python anywhere?
+oh nvm yours is written in something else
+yeah, just an aws server. you can use that for python too, but it's a bit more complicated
+you get a year free though which is cool
+ok i'll check it out
