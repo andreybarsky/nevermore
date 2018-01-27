@@ -1,1 +1,7 @@
 
+Boing: .request a feature to selectively ignore conot
+Boing: .request emoji responses
+samog: .request my wife
+samog: .request respond to every instance of the word illwinter with the trillwinter emote
+Conot: .request disable .request
+Andrey: .request a feature to ignore people
