@@ -5,3 +5,5 @@ samog: .request my wife
 samog: .request respond to every instance of the word illwinter with the trillwinter emote
 Conot: .request disable .request
 Andrey: .request a feature to ignore people
+andrey: .request internal attitude scores
+andrey: .request you must apologise to the bot before it acknowledges you if you have upset it

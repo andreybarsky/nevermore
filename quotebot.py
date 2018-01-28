@@ -5,10 +5,12 @@ from discord.ext import commands
 import logging
 import time
 import random
+import pickle
 
 import quote_manager as qm
 import tag_manager as tm
 import corpus_manager as cm
+import emoji_manager as em
 
 from quote_utils import qparse, to_filename, is_number
 
@@ -54,6 +56,7 @@ async def on_ready():
     print('------')
 
     bot.last_reply = 0
+    bot.last_emoji = 0
     bot.shames = ["that's weak.",
                     "pathetic.",
                     "you think that's funny?",
@@ -65,6 +68,7 @@ async def on_ready():
 
     bot.markovchains = {}
     bot.corpus_last_read = 0
+    bot.emojis = em.edict
 
     print([str(x) for x in bot.servers])
 
@@ -251,13 +255,37 @@ async def on_message(message):
         cmd = message.content.lower()
         serv = to_filename(str(message.server))
 
-        if time.time() - bot.last_reply > 60: # 60 sec cooldown
+        # goon emoji responses:
+
+        if time.time() - bot.last_emoji > 60*10:
+            emoji_reply = True
+            if 'my wife' in cmd:
+                print('adding emoji response:')
+                print(u"\U0001F644")
+                bot.add_reaction(message, "\U0001F644")
+            if 'illwinter' in cmd:
+                bot.add_reaction(message, bot.emojis['trillwinter'])
+            if 'demonbread' in cmd:
+                bot.add_reaction(message, bot.emojis['goodbread'])
+            if 'kurgi' in cmd:
+                bot.add_reaction(message, bot.emojis['kurgi'])
+            if 'quad bless' in cmd or 'quadbless' in cmd:
+                bot.add_reaction(message, bot.emojis['holy'])
+            if cmd.startswith('rip ') or cmd == 'rip':
+                bot.add_reaction(message, bot.emojis['rip'])
+            else:
+                emoji_reply = False
+
+            if emoji_reply:
+                bot.last_emoji = time.time()
+
+        # ancillary text responses:
+
+        if time.time() - bot.last_reply > 60: # 60 sec cooldown for text responses
             if 'bad bot' in cmd:
                 msg = ':('
-                happiness -= 1
             elif 'good bot' in cmd:
                 msg = ':)'
-                happiness += 1
             elif cmd in ['hello bot', 'hi bot', 'hello nevermore', 'hi nevermore']:
                 name = message.author.nick
                 if name is None:
@@ -269,7 +297,6 @@ async def on_message(message):
                         "better not cast that.",
                         "leave me out of this."]
                 msg = random.choice(msgs)
-
             else:
                 msg = None
 
