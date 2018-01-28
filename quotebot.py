@@ -68,9 +68,8 @@ async def on_ready():
 
     print([str(x) for x in bot.servers])
 
-@bot.command(pass_context=True)
-async def logg(ctx):
-    print([x.content for x in bot.messages])
+
+
 
 @bot.command(pass_context=True)
 async def q(ctx, arg1 : str = 'all', *words : str):
@@ -90,6 +89,15 @@ async def q(ctx, arg1 : str = 'all', *words : str):
 
             fullmsg = ctx.message.content  # have to parse the full message to preserve newlines
             msg = fullmsg.split('| ')[1]  # separate out the |
+        elif len(ctx.message.mentions) > 0:
+            print('mention detected')
+            mention = ctx.message.mentions[0]
+            user = get_name(ctx.message.mentions[0])
+            fullmsg = ctx.message.content
+            print('fullmsg: %s' % fullmsg)
+            id = "<@%s>" % ctx.message.mentions[0].id
+            msg = fullmsg.split('.q add ' + id + ' ')[1]
+            print('msg: %s' % msg)
 
         else:
             fullmsg = ctx.message.content # have to parse the full message to preserve newlines
@@ -126,6 +134,10 @@ async def q(ctx, arg1 : str = 'all', *words : str):
             user = arg1
             if '|' in words: # detect multi line usernames
                 user, words = (' '.join(words)).split(' | ')
+            elif len(ctx.message.mentions) > 0: # detect mentions
+                print('mention detected')
+                mention = ctx.message.mentions[0]
+                user = get_name(ctx.message.mentions[0]) # keep words the same; the mention is arg1
 
             if len(words) > 0: # we've been asked for an index, or a multi line username, or both
                 if is_number(words[-1]): # there is an index
@@ -144,7 +156,6 @@ async def q(ctx, arg1 : str = 'all', *words : str):
 
         await bot.say(q)
 
-
 @bot.command(pass_context=True)
 async def tag(ctx, user : str, *tag : str):
     """<name> <tag>: Tag someone as something."""
@@ -157,9 +168,13 @@ async def tag(ctx, user : str, *tag : str):
         user2, tag = (' '.join(tag)).split(' | ')
         print("user2: %s\ntag: %s" % (user2, tag))
         user = user + ' ' + user2
+    elif len(ctx.message.mentions) > 0:
+        print('mention detected')
+        mention = ctx.message.mentions[0]
+        user = get_name(ctx.message.mentions[0])
+        tag = ' '.join(tag)  # extract string from 1-tuple
     else:
         tag = ' '.join(tag) # extract string from 1-tuple
-
     serv = to_filename(str(ctx.message.server))
 
     print('server name: %s' % serv)
@@ -188,10 +203,20 @@ async def tags(ctx, *user : str):
     """<name>: Show someone's tags."""
     serv = to_filename(str(ctx.message.server))
     user = ' '.join(user)
+    print('user parsed as: %s' % user)
+
+    if len(ctx.message.mentions) > 0:
+        print('mention detected')
+        mention = ctx.message.mentions[0]
+        name = get_name(ctx.message.mentions[0])
+        print('name parsed as: %s' % name)
+    else:
+        name = user
+        print('name parsed as: %s' % name)
 
     tags = tm.TagBank(serv)
-    tagstring = tags.gettags(user)
-    await bot.say("%s: %s" % (user, tagstring))
+    tagstring = tags.gettags(name)
+    await bot.say("%s: %s" % (name, tagstring))
 
 @bot.command(pass_context = True)
 async def tagged(ctx, *tag : str):
@@ -229,8 +254,10 @@ async def on_message(message):
         if time.time() - bot.last_reply > 60: # 60 sec cooldown
             if 'bad bot' in cmd:
                 msg = ':('
+                happiness -= 1
             elif 'good bot' in cmd:
                 msg = ':)'
+                happiness += 1
             elif cmd in ['hello bot', 'hi bot', 'hello nevermore', 'hi nevermore']:
                 name = message.author.nick
                 if name is None:
@@ -286,7 +313,15 @@ async def request(ctx, *words):
     with open(filename, 'a') as f:
         f.write("%s: %s\n" % (real_name, msg))
 
-    await bot.say("I'll keep that in mind, %s." % requester)
+    acknowledgements = ["I'll keep that in mind, {}.",
+                        "good idea, {}.",
+                        "that's a terrible idea, {}.",
+                        "I'll think about it, {}.",
+                        "interesting thought, {}.",
+                        "I like the sound of that, {}.",
+                        "why would you want that, {}."]
+
+    await bot.say(random.choice(acknowledgements).format(requester))
 
 bot.run(token)
 
