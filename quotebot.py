@@ -254,10 +254,8 @@ async def on_message(message):
         if time.time() - bot.last_reply > 60: # 60 sec cooldown
             if 'bad bot' in cmd:
                 msg = ':('
-                happiness -= 1
             elif 'good bot' in cmd:
                 msg = ':)'
-                happiness += 1
             elif cmd in ['hello bot', 'hi bot', 'hello nevermore', 'hi nevermore']:
                 name = message.author.nick
                 if name is None:
