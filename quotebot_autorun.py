@@ -12,14 +12,15 @@ def is_lock_free():
     try:
         lock_id = "doubtfulguest.nevermore"   # this should be unique. using your username as a prefix is a convention
         lock_socket.bind('\0' + lock_id)
-        logging.debug("Acquired lock %r" % (lock_id,))
+        print("Acquired lock %r" % (lock_id,))
         return True
     except socket.error:
         # socket already locked, task must already be running
-        logging.info("Failed to acquire lock %r" % (lock_id,))
+        print("Failed to acquire lock %r" % (lock_id,))
         return False
 
 if not is_lock_free():
+    print('Exiting.')
     sys.exit()
 
 from quotebot import main

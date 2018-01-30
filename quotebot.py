@@ -321,5 +321,8 @@ async def request(ctx, *words):
 
     await bot.say(random.choice(acknowledgements).format(requester))
 
-bot.run(token)
+def main():
+    bot.run(token)
 
+if __name__=='__main__':
+    main()
