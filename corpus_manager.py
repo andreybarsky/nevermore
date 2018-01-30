@@ -28,7 +28,7 @@ def server_chain(server): # create transitional probability matrix for server lo
 
     corpus = ' END '.join(newlines)
 
-    splitted = re.findall(r"[\w']+|[.,!?;]", corpus)
+    splitted = re.findall(r"[\S']+|[.,!?;]", corpus)
 
     server_chain = build_chain(splitted)
     return server_chain
