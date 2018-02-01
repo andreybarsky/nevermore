@@ -45,7 +45,7 @@ def build_chain(words, chain={}):
 
     return chain
 
-def generate_message(chain, seed=['END'], count=100):
+def generate_message(chain, seed=['END'], count=100, verbose_failure=True):
     """Seed is the starting point for the chain - must be a list!!!"""
     print('Making markov chain...')
     finalmessage = ""
@@ -75,14 +75,20 @@ def generate_message(chain, seed=['END'], count=100):
                 else:
                     ended = True
             else:
-                return "%s? that doesn't make any sense" % word1
+                if verbose_failure:
+                    return "%s? that doesn't make any sense" % word1
+                else:
+                    return None
 
         attempts += 1
 
         finalmessage = message.replace('END', '')
 
     if attempts == 50:
-        return "that doesn't make any sense at all."
+        if verbose_failure:
+            return "that doesn't make any sense at all."
+        else:
+            return None
     else:
         print('Made a markov chain: %s' % finalmessage)
         return finalmessage

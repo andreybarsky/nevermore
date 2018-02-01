@@ -242,7 +242,8 @@ async def markov(ctx, *seed : str):
         seed = ['END']
 
     msg = cm.generate_message(bot.markovchains[serv], seed=seed)
-    await bot.say(msg)
+    if msg is not None:
+        await bot.say(msg)
 
 @bot.event
 async def on_message(message):
@@ -269,7 +270,20 @@ async def on_message(message):
                 msg = random.choice(msgs)
 
             else:
-                msg = None
+                # a random chance to spit out a markov chain
+                chance = 0.01
+                roll = random.uniform(0,1)
+                print('Random markov roll: %.2f' % roll)
+                if roll < chance and cmd[0] != '.': # don't do this for bot commands
+                    # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
+                    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
+                        print('Loading corpus from %s' % serv)
+                        bot.markovchains[serv] = cm.server_chain(serv)
+                        print('The result chain is %s units long' % len(bot.markovchains[serv]))
+                        bot.corpus_last_read = time.time()
+                    msg = cm.generate_message(bot.markovchains[serv], verbose_failure=False)
+                else:
+                    msg = None
 
             if msg is not None:
                 bot.last_reply = time.time()
