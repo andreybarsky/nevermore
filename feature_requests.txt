@@ -5,3 +5,14 @@ samog: .request my wife
 samog: .request respond to every instance of the word illwinter with the trillwinter emote
 Conot: .request disable .request
 Andrey: .request a feature to ignore people
+andrey: .request help
+Rey-Dog: .request reply to your own mentions
+Rey-Dog: .request compliment me
+Maija: .request Aleš
+Boing: .request automatic markov spam
+jBrereton: .request reminder function (reminder X hours text) to get pm'd by the bot in that amount of time with that reminder
+jsoh: .request a pretender name generator that automatically searches skybot for random strings of kevin quotes from #lf that fit into pretender name length
+jsoh: .request let me make the robot remember messages so i can say ?rp and it will tell show me the picture of the rp image like skybot
+Mu: .request the golem, ruby, and soup commands.
+jsoh: .request .bit
+jsoh: .request https://puu.sh/zfY0R/0e91280e27.png not this

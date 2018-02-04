@@ -271,7 +271,7 @@ async def on_message(message):
 
             else:
                 # a random chance to spit out a markov chain
-                chance = 0.01
+                chance = 0.02
                 roll = random.uniform(0,1)
                 print('Random markov roll: %.2f' % roll)
                 if roll < chance and cmd[0] != '.': # don't do this for bot commands
@@ -334,6 +334,25 @@ async def request(ctx, *words):
                         "why would you want that, {}."]
 
     await bot.say(random.choice(acknowledgements).format(requester))
+
+# some debugging commands:
+
+@bot.command(pass_context = True)
+async def explain(ctx, *args):
+    print("Current markov contexts:")
+    chains = [x for x in bot.markovchains.keys()]
+    print(chains)
+    for c in chains:
+        print('Inside %s:' % c)
+        print(list(bot.markovchains[c].keys())[0:20])
+
+@bot.command(pass_context = True)
+async def loadmarkov(ctx, servername):
+    serv = to_filename(servername)
+    print('Loading corpus from %s' % serv)
+    bot.markovchains[serv] = cm.server_chain(serv)
+    print('The result chain is %s units long' % len(bot.markovchains[serv]))
+    bot.corpus_last_read = time.time()
 
 def main():
     bot.run(token)
