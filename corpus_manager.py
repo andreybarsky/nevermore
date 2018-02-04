@@ -33,7 +33,9 @@ def server_chain(server): # create transitional probability matrix for server lo
     server_chain = build_chain(splitted)
     return server_chain
 
-def build_chain(words, chain={}):
+def build_chain(words):
+    chain = {}
+    print('length of starting chain: %s' % len(chain))
     index = 1
     for word in words[index:]:
         key = words[index - 1]
