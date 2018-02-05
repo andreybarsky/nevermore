@@ -39,12 +39,12 @@ def build_chain(words):
     index = 1
     for word in words[index:]:
         key = words[index - 1]
-        if key in chain:
-            chain[key].append(word)
-        else:
-            chain[key] = [word]
+        if key[:2] != '<@': # filter out mentions
+            if key in chain:
+                chain[key].append(word)
+            else:
+                chain[key] = [word]
         index += 1
-
     return chain
 
 def generate_message(chain, seed=['END'], count=100, verbose_failure=True):
