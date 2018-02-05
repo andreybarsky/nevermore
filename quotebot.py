@@ -12,8 +12,9 @@ import corpus_manager as cm
 
 from quote_utils import qparse, to_filename, is_number
 
-token = 'NDA0MjIyMTM0OTQ5MzgwMTA2.DUSzYg.OUrC1agKwJOsRJV9uLsRgSeN67U'
-description = None
+with open('token.txt', 'r') as file:
+    token = file.read()[:-1]
+description = "i'm a markov bot. type .help for help"
 
 bot = commands.Bot(command_prefix='.', description=description)
 bot.remove_command('help')
@@ -268,6 +269,8 @@ async def on_message(message):
                         "better not cast that.",
                         "leave me out of this."]
                 msg = random.choice(msgs)
+            elif cmd =='.butt':
+                msg = 'butt'
 
             else:
                 # a random chance to spit out a markov chain
@@ -293,6 +296,12 @@ async def on_message(message):
         cm.write(cmd, serv)
 
     await bot.process_commands(message)
+
+@bot.event
+async def on_command_error(error, ctx):
+    # this is a MASSIVE hack but it is how we allow users to set new commands dynamically
+    if isinstance(error, commands.CommandNotFound):
+        print('nobody has set that command!')
 
 
 @bot.command(pass_context = True)
@@ -335,24 +344,7 @@ async def request(ctx, *words):
 
     await bot.say(random.choice(acknowledgements).format(requester))
 
-# some debugging commands:
 
-@bot.command(pass_context = True)
-async def explain(ctx, *args):
-    print("Current markov contexts:")
-    chains = [x for x in bot.markovchains.keys()]
-    print(chains)
-    for c in chains:
-        print('Inside %s:' % c)
-        print(list(bot.markovchains[c].keys())[0:20])
-
-@bot.command(pass_context = True)
-async def loadmarkov(ctx, servername):
-    serv = to_filename(servername)
-    print('Loading corpus from %s' % serv)
-    bot.markovchains[serv] = cm.server_chain(serv)
-    print('The result chain is %s units long' % len(bot.markovchains[serv]))
-    bot.corpus_last_read = time.time()
 
 def main():
     bot.run(token)
