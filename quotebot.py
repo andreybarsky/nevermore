@@ -5,10 +5,12 @@ from discord.ext import commands
 import logging
 import time
 import random
+import os
 
 import quote_manager as qm
 import tag_manager as tm
 import corpus_manager as cm
+import memory_manager as mm
 
 from quote_utils import qparse, to_filename, is_number
 
@@ -18,6 +20,7 @@ description = "i'm a markov bot. type .help for help"
 
 bot = commands.Bot(command_prefix='.', description=description)
 bot.remove_command('help')
+bot.remove_command('butt') # i have no idea why this is needed!
 
 # features to be added:
 # handle multi line quotes from compact mode
@@ -64,7 +67,8 @@ async def on_ready():
                     "no.",
                     "get over yourself."]
 
-    bot.markovchains = {}
+    bot.markovchains = {} # dict keys are servers
+    bot.cmds = {} # dict keys are servers
     bot.corpus_last_read = 0
 
     print([str(x) for x in bot.servers])
@@ -232,6 +236,12 @@ async def tagged(ctx, *tag : str):
 @bot.command(pass_context = True)
 async def markov(ctx, *seed : str):
     serv = to_filename(str(ctx.message.server))
+
+    if len(ctx.message.mentions) > 0:
+        print('mention detected')
+        mention = ctx.message.mentions[0]
+        name = get_name(ctx.message.mentions[0])
+
     # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
         print('Loading corpus from %s' % serv)
@@ -241,6 +251,9 @@ async def markov(ctx, *seed : str):
 
     if seed == ():
         seed = ['END']
+    elif len(seed) == 1:
+        # we've been asked to make a markov from just a mention, so just convert it to string:
+        seed = [name]
 
     msg = cm.generate_message(bot.markovchains[serv], seed=seed)
     if msg is not None:
@@ -269,8 +282,24 @@ async def on_message(message):
                         "better not cast that.",
                         "leave me out of this."]
                 msg = random.choice(msgs)
-            elif cmd =='.butt':
-                msg = 'butt'
+            elif 'how do' in cmd and len(cmd) < 100:
+                print('I smell a "how do"...')
+                print('the message was: %s' % cmd)
+                chance = 0.1
+                roll = random.uniform(0, 1)
+                if roll < chance:
+                    msg = 'very carefully.'
+                else:
+                    msg = None
+            elif len(message.mentions) > 0:
+                print('mention detected')
+                mention = message.mentions[0]
+                name = get_name(message.mentions[0])
+                if name == 'nevermore':
+                    # someone is addressing us directly!
+                    print("someone's talking about me")
+                    # do something here
+                msg = None
 
             else:
                 # a random chance to spit out a markov chain
@@ -297,11 +326,56 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+@bot.command(pass_context = True)
+async def remember(ctx, *args):
+    key = args[0].lower()
+    print(f'Remembering {key}')
+    tag = ctx.message.content.split('.remember ' + key + ' ')[1]
+
+    if key[0] == '.': # in case someone types the dot for the tag
+        key = tag[1:]
+    serv = to_filename(str(ctx.message.server))
+    if serv not in bot.cmds: # load the xml:
+        bot.cmds[serv] = mm.MemBank(serv)
+
+    # check if the new cmd isn't an existing command:
+    if key in list(bot.commands.keys()):
+        print('invalid, that command already exists!')
+        return
+
+    msg = bot.cmds[serv].remember(key, tag)
+    await bot.say(msg)
+
+@bot.command(pass_context = True)
+async def forget(ctx, key):
+    key = key.lower()
+    print(f'Forgetting {key}')
+    serv = to_filename(str(ctx.message.server))
+    if serv not in bot.cmds: # load the xml:
+        bot.cmds[serv] = mm.MemBank(serv)
+
+    msg = bot.cmds[serv].forget(key)
+    await bot.say(msg)
+
 @bot.event
 async def on_command_error(error, ctx):
     # this is a MASSIVE hack but it is how we allow users to set new commands dynamically
     if isinstance(error, commands.CommandNotFound):
-        print('nobody has set that command!')
+        # recall from cmds:
+
+        serv = to_filename(str(ctx.message.server))
+        if serv not in bot.cmds:
+            bot.cmds[serv] = mm.MemBank(serv)
+
+        cmd = ctx.message.content[1:].lower()
+        if cmd in bot.cmds[serv].memories:
+            print('I remember this one:')
+            print(bot.cmds[serv].recall(cmd))
+            recall = bot.cmds[serv].recall(cmd)
+            await bot.send_message(ctx.message.channel, f'{cmd}: {recall}')
+
+        else:
+            print('nobody has set that command!')
 
 
 @bot.command(pass_context = True)
@@ -319,6 +393,9 @@ async def help(ctx):
 .tagged <tag>: Shows everyone with this tag.
 
 .markov [<seed>]: Start a Markov chain, optionally seeded by some words.
+
+.remember <cmd> <tag>:
+.<cmd>
 
 .request <feature>: Request a new feature.
 
@@ -344,7 +421,13 @@ async def request(ctx, *words):
 
     await bot.say(random.choice(acknowledgements).format(requester))
 
-
+@bot.command(pass_context = True)
+async def loadmarkov(ctx, servername):
+    serv = to_filename(servername)
+    print('Loading corpus from %s' % serv)
+    bot.markovchains[serv] = cm.server_chain(serv)
+    print('The result chain is %s units long' % len(bot.markovchains[serv]))
+    bot.corpus_last_read = time.time()
 
 def main():
     bot.run(token)

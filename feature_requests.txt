@@ -16,3 +16,5 @@ jsoh: .request let me make the robot remember messages so i can say ?rp and it w
 Mu: .request the golem, ruby, and soup commands.
 jsoh: .request .bit
 jsoh: .request https://puu.sh/zfY0R/0e91280e27.png not this
+jBrereton: .request rip
+jsoh: .request please dont have the robot recruit for a nazi discord

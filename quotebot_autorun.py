@@ -1,6 +1,7 @@
 import logging
 import socket
 import sys
+import os
 
 lock_socket = None  # we want to keep the socket open until the very end of
                     # our script so we use a global variable to avoid going
@@ -22,6 +23,8 @@ def is_lock_free():
 if not is_lock_free():
     logging.info('Exiting.')
     sys.exit()
+
+os.chdir('/home/doubtfulguest/nevermore/')
 
 from quotebot import main
 logging.info('Running quotebot...')
