@@ -285,9 +285,11 @@ async def on_message(message):
             elif 'how do' in cmd and len(cmd) < 100:
                 print('I smell a "how do"...')
                 print('the message was: %s' % cmd)
-                chance = 0.1
+                chance = 0.2
                 roll = random.uniform(0, 1)
+                print('The roll is: %s' % roll)
                 if roll < chance:
+                    time.sleep(3) # for comedic effect
                     msg = 'very carefully.'
                 else:
                     msg = None
@@ -394,8 +396,8 @@ async def help(ctx):
 
 .markov [<seed>]: Start a Markov chain, optionally seeded by some words.
 
-.remember <cmd> <tag>:
-.<cmd>
+.remember <cmd> <content>: Remembers a command to be used in the future.
+.<cmd>: Recall the content of a command.
 
 .request <feature>: Request a new feature.
 
