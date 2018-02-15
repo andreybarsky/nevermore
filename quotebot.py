@@ -226,7 +226,7 @@ async def tags(ctx, *user : str):
     await bot.say("%s: %s" % (name, tagstring))
 
 @bot.command(pass_context=True, name='is')
-async def is_tag(ctx, user : str, tag_question* : str):
+async def is_tag(ctx, user : str, *tag_question : str):
     """<name> <tag>: Is this person something?."""
     serv = to_filename(str(ctx.message.server))
     user = ' '.join(user)
