@@ -252,6 +252,7 @@ async def tags(ctx, *user : str):
 #         msg = 'no'
 #     await bot.say(msg)
 
+
 @bot.command(pass_context = True)
 async def tagged(ctx, *tag : str):
     """<tag>: Show everyone who is tagged as this."""
@@ -287,6 +288,21 @@ async def markov(ctx, *seed : str):
     print('trying to make a markov chain...')
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
     print('made a 2nd order markov chain:\n%s' % msg)
+    if msg is not None:
+        await bot.say(msg)
+
+@bot.command(pass_context = True, name='in')
+async def markov_in(ctx):
+    serv = to_filename(str(ctx.message.server))
+    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
+        print('Loading corpus from %s' % serv)
+        bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
+        print('The result chain is %s units long' % len(bot.markovchains[serv]))
+        bot.corpus_last_read = time.time()
+    seed = ['in']
+    print("trying to make a markov chain, but with 'in'")
+    msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
+    print('made a 2nd order markov chain with in:\n%s' % msg)
     if msg is not None:
         await bot.say(msg)
 
