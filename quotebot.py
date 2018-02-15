@@ -225,32 +225,32 @@ async def tags(ctx, *user : str):
     tagstring = tags.gettags(name)
     await bot.say("%s: %s" % (name, tagstring))
 
-# @bot.command(pass_context=True)
-# async def is(ctx, user : str, tag_question* : str):
-#     """<name> <tag>: Is this person something?."""
-#     serv = to_filename(str(ctx.message.server))
-#     user = ' '.join(user)
-#     print('user parsed as: %s' % user)
+@bot.command(pass_context=True, name='is')
+async def is_tag(ctx, user : str, tag_question* : str):
+    """<name> <tag>: Is this person something?."""
+    serv = to_filename(str(ctx.message.server))
+    user = ' '.join(user)
+    print('user parsed as: %s' % user)
 
-#     if len(ctx.message.mentions) > 0:
-#         print('mention detected')
-#         mention = ctx.message.mentions[0]
-#         name = get_name(ctx.message.mentions[0])
-#         print('name parsed as: %s' % name)
-#     else:
-#         name = user
-#         print('name parsed as: %s' % name)
+    if len(ctx.message.mentions) > 0:
+        print('mention detected')
+        mention = ctx.message.mentions[0]
+        name = get_name(ctx.message.mentions[0])
+        print('name parsed as: %s' % name)
+    else:
+        name = user
+        print('name parsed as: %s' % name)
 
-#     tag_question = ' '.join(tag_question)
+    tag_question = ' '.join(tag_question)
 
-#     tags = tm.TagBank(serv)
-#     tagstring = tags.gettags(name)
-#     taglist = tagstring.split(', ')
-#     if tag_question in taglist:
-#         msg = 'yes'
-#     else:
-#         msg = 'no'
-#     await bot.say(msg)
+    tags = tm.TagBank(serv)
+    tagstring = tags.gettags(name)
+    taglist = tagstring.split(', ')
+    if tag_question in taglist:
+        msg = 'yes'
+    else:
+        msg = 'no'
+    await bot.say(msg)
 
 
 @bot.command(pass_context = True)
