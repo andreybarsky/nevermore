@@ -241,6 +241,9 @@ async def markov(ctx, *seed : str):
         print('mention detected')
         mention = ctx.message.mentions[0]
         name = get_name(ctx.message.mentions[0])
+        if len(seed) == 1:
+            # we've been asked to make a markov from just a mention, so just convert it to string:
+            seed = [name]
 
     # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
@@ -251,9 +254,6 @@ async def markov(ctx, *seed : str):
 
     if seed == ():
         seed = ['END']
-    elif len(seed) == 1:
-        # we've been asked to make a markov from just a mention, so just convert it to string:
-        seed = [name]
 
     msg = cm.generate_message(bot.markovchains[serv], seed=seed)
     if msg is not None:
@@ -282,7 +282,7 @@ async def on_message(message):
                         "better not cast that.",
                         "leave me out of this."]
                 msg = random.choice(msgs)
-            elif 'how do' in cmd and len(cmd) < 100:
+            elif 'how do' in cmd and 'feel' not in cmd and len(cmd) < 100: # we want "how do", but not "how do i/you feel"
                 print('I smell a "how do"...')
                 print('the message was: %s' % cmd)
                 chance = 0.2

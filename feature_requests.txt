@@ -18,3 +18,11 @@ jsoh: .request .bit
 jsoh: .request https://puu.sh/zfY0R/0e91280e27.png not this
 jBrereton: .request rip
 jsoh: .request please dont have the robot recruit for a nazi discord
+jsoh: .request !in
+Conot: .request kill creator
+andrey: .request fix your markov seed
+andrey: .request don't call me names
+samog: .request say "Jesus Christ." if anyone says "hot pants"
+Boing: .request clearer error messages
+Boing: .request a special algorithm for the markov chain that detects links and mutates them into other links from the same domain
+RockyBst: .request Naksu make his goddamn genie game
