@@ -158,12 +158,13 @@ def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempt
                 print('never seen the word %s '% word1)
                 return failure
     assert wordkey in chain2 # wordkey should be valid for chain2 now
+    message_so_far = message
     print('%s exists in chain2' % str(wordkey))
     # move on to generating rest of chain
     attempt = 0
-    finalmessage = ''
     valid = False
     while not valid:
+        message = message_so_far
         next_word = None
         while next_word != 'END':
             # print("pulling a random continuation from chain2 for %s" % str(wordkey))

@@ -68,6 +68,8 @@ async def on_ready():
                     "get over yourself."]
 
     bot.markovchains = {} # dict keys are servers
+    bot.markovchains2 = {} # second order dependencies
+
     bot.cmds = {} # dict keys are servers
     bot.corpus_last_read = 0
 
@@ -274,15 +276,17 @@ async def markov(ctx, *seed : str):
 
     # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
-        print('Loading corpus from %s\nfor a 2nd order markov chain' % serv)
-        bot.markovchains[serv], bot.markovchain2 = cm.server_chain(serv)
+        print('Loading corpus from %s' % serv)
+        bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
         print('The result chain is %s units long' % len(bot.markovchains[serv]))
         bot.corpus_last_read = time.time()
 
     if seed == ():
         seed = ['END']
 
+    print('trying to make a markov chain...')
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
+    print('made a 2nd order markov chain:\n%s' % msg)
     if msg is not None:
         await bot.say(msg)
 
