@@ -229,7 +229,7 @@ async def tags(ctx, *user : str):
 async def is_tag(ctx, user : str, *tag_question : str):
     """<name> <tag>: Is this person something?."""
     serv = to_filename(str(ctx.message.server))
-    user = ' '.join(user)
+    #user = ' '.join(user)
     print('user parsed as: %s' % user)
 
     if len(ctx.message.mentions) > 0:
@@ -474,9 +474,21 @@ async def request(ctx, *words):
 async def loadmarkov(ctx, servername):
     serv = to_filename(servername)
     print('Loading corpus from %s' % serv)
-    bot.markovchains[serv] = cm.server_chain(serv)
-    print('The result chain is %s units long' % len(bot.markovchains[serv]))
+    bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
+    print('Chain1: %s units long' % len(bot.markovchains[serv]))
+    print('Chain2: %s units long' % len(bot.markovchains2[serv]))
     bot.corpus_last_read = time.time()
+
+@bot.command(pass_context = True)
+async def serv_markov(ctx, servername):
+    serv = to_filename(servername)
+    seed = ['END']
+    print('making a markov chain from server corpus: %s and seed: %s' % (serv, str(seed)))
+    msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
+    print('made a 2nd order markov chain:\n%s' % msg)
+    if msg is not None:
+        await bot.say(msg)
+
 
 def main():
     bot.run(token)

@@ -26,3 +26,6 @@ samog: .request say "Jesus Christ." if anyone says "hot pants"
 Boing: .request clearer error messages
 Boing: .request a special algorithm for the markov chain that detects links and mutates them into other links from the same domain
 RockyBst: .request Naksu make his goddamn genie game
+andrey: .request test
+andrey: .request thank you messages, and perhaps some more sarcastic responses upon thanking the robot
+JonJoe: .request a full neural net designed to play dominions 5 better than the inbuilt ai
