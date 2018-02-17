@@ -212,7 +212,25 @@ async def lf(ctx, user : str = 'all', *args : str):
     print('Got a quote: %s' % q)
     await bot.say(q)
 
+@bot.command(pass_context=True)
+async def pretender(ctx):
+    serv = 'lf'
+    print('getting quotes, server name: %s' % serv)
+    qb = qm.QuoteBank(serv)
 
+    attempt = 1
+    valid = False
+
+    while not valid and attempt < 500:
+        random_quote = qb.get('kevin').split('kevin: ')[1]
+        if len(random_quote) <= 33 and random_quote[:4] != 'http':
+            valid = True
+        else:
+            attempt += 1
+    if valid:
+        await bot.say(random_quote)
+    else:
+        await bot.say('Pro-transmasculine enslavement.')
 
 
 @bot.command(pass_context=True)
