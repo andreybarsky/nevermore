@@ -7,7 +7,7 @@ import time
 import random
 import os
 
-import quote_manager as qm
+import quote_manager2 as qm
 import tag_manager as tm
 import corpus_manager as cm
 import memory_manager as mm
@@ -162,6 +162,58 @@ async def q(ctx, arg1 : str = 'all', *words : str):
                 q = quotes.get(user)
 
         await bot.say(q)
+
+@bot.command(pass_context=True)
+async def lf(ctx, user : str = 'all', *args : str):
+    """Just like getting quotes, but from lf"""
+    serv = 'lf'
+    print('getting quotes, server name: %s' % serv)
+    quotes = qm.QuoteBank(serv)
+
+    q = None
+    print('user: %s' % user)
+    if user == 'all':  # grab a quote irrespective of user
+        print('calling allquote()')
+        attempt = 1
+        while q is None and attempt < 20: # some quotes are empty?
+            q = quotes.allquote()
+            attempt += 1
+    elif is_number(user):
+        # get an allquote with index
+        print('calling allquote(int(user))')
+        q = quotes.allquote(int(user))
+
+    else:  # grab a random quote from the named user
+        if '|' in args:  # detect multi line usernames
+            user, args = (' '.join(words)).split(' | ')
+        elif len(ctx.message.mentions) > 0:  # detect mentions
+            print('mention detected')
+            mention = ctx.message.mentions[0]
+            user = get_name(ctx.message.mentions[0])  # keep words the same; the mention is arg1
+
+        if len(args) > 0:  # we've been asked for an index, or a multi line username, or both
+            if is_number(args[-1]):  # there is an index
+                idx = int(args[-1])  # retrieve index
+
+                args = args[:-1]
+                if len(args) > 0:  # are we dealing with a multi word username?
+                    user = "%s %s" % (user, ' '.join(args))  # complete the username
+                q = quotes.get(user, idx)  # multi word username with index
+            else:  # no index, just a multi word username on its own
+                user = "%s %s" % (user, ' '.join(args))
+                q = quotes.get(user)  # multi word username without index
+
+        else:  # get a random quote
+            attempt = 1
+            while q is None and attempt < 20:
+                q = quotes.get(user)
+                attempt += 1
+
+    print('Got a quote: %s' % q)
+    await bot.say(q)
+
+
+
 
 @bot.command(pass_context=True)
 async def tag(ctx, user : str, *tag : str):
