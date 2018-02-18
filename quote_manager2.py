@@ -32,6 +32,7 @@ class QuoteBank(object):
             if os.path.isfile(self.filenamecsv):
                 print('Importing csv...')
                 self.from_csv(self.filenamecsv)
+                print('Import successful.')
             else:
                 if os.path.isfile(self.filenamexml):
                     print('Importing xml...')
@@ -151,6 +152,7 @@ class QuoteBank(object):
                 else:
                     self.users[user] = [Quote(text, stamp, int(num))]
                 i += 1
+
         self.numquotes = i
 
     def count_quotes(self):

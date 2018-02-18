@@ -29,3 +29,16 @@ RockyBst: .request Naksu make his goddamn genie game
 andrey: .request test
 andrey: .request thank you messages, and perhaps some more sarcastic responses upon thanking the robot
 JonJoe: .request a full neural net designed to play dominions 5 better than the inbuilt ai
+Mu: .request .comic
+jsoh: .request boing make it so the robot will not accept quotes from me for any reaosn than kyou
+Ramc: .request add the comic maker functionality
+jsoh: .request rename .pretender to .name or .kevin
+jsoh: .request boing please procedurally generate a dominions 5 mod that uses every legal result of .pretender to reseed the commander name list for every nation
+jsoh: .request boing add all of tge quotes from both channels to the markov corpus
+jsoh: .request boing the next step is to use a neural network to procedurally generate new kevin posts
+JonJoe: .request on rare occasionally, repeat what someone says, but replace random words with 'butt'
+JonJoe: .request or replace random words with samog
+jsoh: .request maybe fold in the lf acoustickitty quotes to the .pretender command
+jsoh: .request also rename the pretender command to something shorter that doesnt suck
+jBrereton: .request .kev
+JonJoe: .request .tender

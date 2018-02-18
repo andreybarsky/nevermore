@@ -73,6 +73,8 @@ async def on_ready():
     bot.cmds = {} # dict keys are servers
     bot.corpus_last_read = 0
 
+    bot.beaten_to_the_punch = False
+
     print([str(x) for x in bot.servers])
 
 
@@ -125,7 +127,7 @@ async def q(ctx, arg1 : str = 'all', *words : str):
 
         else:
             quotes.add(user, quote)
-            quotes.to_xml()
+            #quotes.to_xml()
             await bot.say('Quote added.')
 
 
@@ -212,7 +214,7 @@ async def lf(ctx, user : str = 'all', *args : str):
     print('Got a quote: %s' % q)
     await bot.say(q)
 
-@bot.command(pass_context=True)
+@bot.command(pass_context=True, aliases=['name', 'god'])
 async def pretender(ctx):
     serv = 'lf'
     print('getting quotes, server name: %s' % serv)
@@ -231,7 +233,6 @@ async def pretender(ctx):
         await bot.say(random_quote)
     else:
         await bot.say('Pro-transmasculine enslavement.')
-
 
 @bot.command(pass_context=True)
 async def tag(ctx, user : str, *tag : str):
@@ -383,6 +384,10 @@ async def on_message(message):
         cmd = message.content.lower()
         serv = to_filename(str(message.server))
 
+        if 'very carefully' in cmd:
+            print('someone beat us to the punch!')
+            #bot.beaten_to_the_punch = True
+
         if time.time() - bot.last_reply > 60: # 60 sec cooldown
             if 'bad bot' in cmd:
                 msg = ':('
@@ -400,16 +405,25 @@ async def on_message(message):
                         "leave me out of this."]
                 msg = random.choice(msgs)
             elif 'how do' in cmd and 'feel' not in cmd and len(cmd) < 100: # we want "how do", but not "how do i/you feel"
-                print('I smell a "how do"...')
-                print('the message was: %s' % cmd)
-                chance = 0.2
+                chance = 0.25
                 roll = random.uniform(0, 1)
-                print('The roll is: %s' % roll)
                 if roll < chance:
+                    bot.beaten_to_the_punch = False # let someone else say it
+                    print("I'm thinking about making the joke")
                     time.sleep(3) # for comedic effect
-                    msg = 'very carefully.'
+                    if not bot.beaten_to_the_punch:
+                        # print('messages received so far: %s' % bot.messages)
+                        print("I'm making the joke")
+                        msg = 'very carefully.'
+                    #else:
+                    #    print("I was gonna make the joke but someone beat me to it")
+                    #    random_chars = ['@', ';', '#', '$', 'g', 'h', 'z', 'j', 'f', 'k', '%']
+                    #    expletive = random.choice(random_chars) + random.choice(random_chars)
+                    #    msg = 'very c%sfuck' % expletive
+                    #    bot.beaten_to_the_punch = False
                 else:
                     msg = None
+
             elif len(message.mentions) > 0:
                 print('mention detected')
                 mention = message.mentions[0]
@@ -495,6 +509,8 @@ async def on_command_error(error, ctx):
 
         else:
             print('nobody has set that command!')
+    else:
+        print('===bot error:\n%s' % error)
 
 
 @bot.command(pass_context = True)
