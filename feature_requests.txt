@@ -42,3 +42,29 @@ jsoh: .request maybe fold in the lf acoustickitty quotes to the .pretender comma
 jsoh: .request also rename the pretender command to something shorter that doesnt suck
 jBrereton: .request .kev
 JonJoe: .request .tender
+jsoh: .request .drn https://imgur.com/ZiSPqtp
+jsoh: .request boing homero in irc does a roll when you tell it .drn can you make hour robot do a roll if you say .roll
+jsoh: .request please delete every tag that anyone whos not me or samog has that has the word samog in it, as its demonstrably false that anyone but me and samog are samog
+JonJoe: .request words *checks notes* more words
+RockyBst: .request .rip
+samog: .request make the bot say "Spike Sent" if someone says "send spike"
+jsoh: .request make the bots kiss
+jBrereton: .request .womble to tell us all the things u remember
+jsoh: .request make the dang bot work as a markov
+beardbeard: .request samog
+Kongming: .request the .bully feature from the irc bots
+Ramc: .request if someone says 'never tell me the odds' the bot permanantly ignores them trying to use the .odds command
+RockyBst: .request updating .help
+Boing: .request samog: if 3 people in a row say "same" the bot should also say "same"
+jsoh: .request a feature to flame people for posting links someone else posted already
+samog: .request the .etoke command
+jsoh: .request do not add the etoke command
+RockyBst: .request I think you mean anim<whatever the fuck character>
+jsoh: .request boing this is awful
+Kongming: .request fix jsoh's fuckup and also the walgreets quote from the future
+RockyBst: .request proper parsing of /r/n
+RockyBst: .request a gallery of good battle reports
+jsoh: .request make the robot actually do markov things
+jsoh: .request make .in start a markov chain starting with *in please
+jsoh: .request make  .q not require a index so i can pull quotes interdimensionally
+Boing: .request automatic noun detection

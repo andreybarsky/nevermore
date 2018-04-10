@@ -53,11 +53,12 @@ def build_chain2(words):
     chain2 = {}
     index = 2
     for word in words[index:]:
-        dkey = (words[index-2], words[index-1])
-        if dkey in chain2:
-            chain2[dkey].append(word)
-        else:
-            chain2[dkey] = [word]
+        if word[:2] != '<@': # filter out mentions. experimental!
+            dkey = (words[index-2], words[index-1])
+            if dkey in chain2:
+                chain2[dkey].append(word)
+            else:
+                chain2[dkey] = [word]
         index += 1
     return chain2
 

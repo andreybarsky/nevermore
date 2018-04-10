@@ -6,6 +6,7 @@ import logging
 import time
 import random
 import os
+import math
 
 import quote_manager2 as qm
 import tag_manager as tm
@@ -20,7 +21,6 @@ description = "i'm a markov bot. type .help for help"
 
 bot = commands.Bot(command_prefix='.', description=description)
 bot.remove_command('help')
-bot.remove_command('butt') # i have no idea why this is needed!
 
 # features to be added:
 # handle multi line quotes from compact mode
@@ -37,14 +37,14 @@ def get_name(author, serv=None):
     if name is None:
         name = str(author).split('#')[0]
 
-    if serv is not None:
+    if serv is not None: # if serv is None, we just get their actual name, else we pick a fun tag from that server's tagbank:
         tags = tm.TagBank(serv) # get tags
         tagstring = tags.gettags(name.lower())
         if tagstring == 'No tags.':
             return name
         else:
             taglist = tagstring.split(', ')
-            possible_names = [name] + taglist # list of real name and tags
+            possible_names = taglist + [name] # list of real name and tags
             newname = random.choice(possible_names) # choose one randomly
             return newname
     else:
@@ -224,7 +224,7 @@ async def pretender(ctx):
     valid = False
 
     while not valid and attempt < 500:
-        random_quote = qb.get('kevin').split('kevin: ')[1]
+        random_quote = qb.get('kevin').split('<kevin>')[1]
         if len(random_quote) <= 33 and random_quote[:4] != 'http':
             valid = True
         else:
@@ -274,7 +274,8 @@ async def tag(ctx, user : str, *tag : str):
         if ret is not None: # tagbank tells us there are no tags
             await bot.say(ret)
         else:
-            await bot.say('Tag added.')
+            tagstring = tags.gettags(user)
+            await bot.say("%s: %s" % (user, tagstring))
 
 @bot.command(pass_context=True)
 async def tags(ctx, *user : str):
@@ -337,6 +338,7 @@ async def tagged(ctx, *tag : str):
 @bot.command(pass_context = True)
 async def markov(ctx, *seed : str):
     serv = to_filename(str(ctx.message.server))
+    print('server name: %s' % serv)
 
     if len(ctx.message.mentions) > 0:
         print('mention detected')
@@ -350,15 +352,17 @@ async def markov(ctx, *seed : str):
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
         print('Loading corpus from %s' % serv)
         bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
-        print('The result chain is %s units long' % len(bot.markovchains[serv]))
+        print('Chain1: %s units long' % len(bot.markovchains[serv]))
+        print('Chain2: %s units long' % len(bot.markovchains2[serv]))
         bot.corpus_last_read = time.time()
 
     if seed == ():
         seed = ['END']
+    else:
+        seed = [x.lower() for x in seed] # lowercase the seed
 
     print('trying to make a markov chain...')
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
-    print('made a 2nd order markov chain:\n%s' % msg)
     if msg is not None:
         await bot.say(msg)
 
@@ -368,27 +372,40 @@ async def markov_in(ctx):
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
         print('Loading corpus from %s' % serv)
         bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
-        print('The result chain is %s units long' % len(bot.markovchains[serv]))
+        print('Chain1: %s units long' % len(bot.markovchains[serv]))
+        print('Chain2: %s units long' % len(bot.markovchains2[serv]))
         bot.corpus_last_read = time.time()
-    seed = ['in']
+    seed = ['*in']
     print("trying to make a markov chain, but with 'in'")
-    msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
+    valid = False
+    attempts = 0
+    while not valid and attempts < 30:
+        msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
+        if 'voice*' in msg:
+            valid = True
+        else:
+            attempts += 1
     print('made a 2nd order markov chain with in:\n%s' % msg)
     if msg is not None:
         await bot.say(msg)
 
 @bot.event
 async def on_message(message):
+    msg = None
     # we do not want the bot to reply to itself
     if message.author != bot.user:
         cmd = message.content.lower()
         serv = to_filename(str(message.server))
 
-        if 'very carefully' in cmd:
-            print('someone beat us to the punch!')
-            #bot.beaten_to_the_punch = True
-
-        if time.time() - bot.last_reply > 60: # 60 sec cooldown
+        if 'ty bot' in cmd or 'thanks bot' in cmd or 'thanks nevermore' in cmd or 'ty nevermore' in cmd or 'thx bot' in cmd or 'thx nevermore' in cmd:
+            requester = get_name(message.author, to_filename(str(message.server)))
+            responses = ["you're welcome, {}",
+                        "ur welcome, {}",
+                        "no problem, {}",
+                        "any time, {}",
+                        "my pleasure, {}"]
+            msg = (random.choice(responses).format(requester))
+        elif time.time() - bot.last_reply > 60: # 60 sec cooldown
             if 'bad bot' in cmd:
                 msg = ':('
             elif 'good bot' in cmd:
@@ -399,31 +416,33 @@ async def on_message(message):
                     name = get_name(message.author, serv)
                 greeting = random.choice(['hi', 'hello'])
                 msg = '%s %s' % (greeting, name)
-            elif 'cast bot' in cmd: # a dominions in-joke
-                msgs = ["cast what now?",
-                        "better not cast that.",
-                        "leave me out of this."]
-                msg = random.choice(msgs)
             elif 'how do' in cmd and 'feel' not in cmd and len(cmd) < 100: # we want "how do", but not "how do i/you feel"
                 chance = 0.25
                 roll = random.uniform(0, 1)
                 if roll < chance:
-                    bot.beaten_to_the_punch = False # let someone else say it
-                    print("I'm thinking about making the joke")
                     time.sleep(3) # for comedic effect
-                    if not bot.beaten_to_the_punch:
-                        # print('messages received so far: %s' % bot.messages)
-                        print("I'm making the joke")
-                        msg = 'very carefully.'
-                    #else:
-                    #    print("I was gonna make the joke but someone beat me to it")
-                    #    random_chars = ['@', ';', '#', '$', 'g', 'h', 'z', 'j', 'f', 'k', '%']
-                    #    expletive = random.choice(random_chars) + random.choice(random_chars)
-                    #    msg = 'very c%sfuck' % expletive
-                    #    bot.beaten_to_the_punch = False
-                else:
-                    msg = None
-
+                    msg = 'very carefully.'
+            elif 'my wife' in cmd:
+                msg = 'MY WIFE.'
+            elif 'so bad' in cmd or 'very bad' in cmd or 'really bad' in cmd or 'insanely bad' in cmd or 'incredibly bad' in cmd or 'unbelievably bad' in cmd:
+                print('I smell something bad.')
+                print('the server is: %s' % serv)
+                if serv == 'very_official_discord_server' or serv=='bot_testing_server': # this is a dom goons injoke
+                    print("so I'm considering making the joke")
+                    if 'very bad' in cmd or 'so bad' in cmd or 'really bad' in cmd:
+                        chance = 0.25
+                    else:
+                        chance = 0.5
+                    roll = random.uniform(0, 1)
+                    print('The roll is: %s' % roll)
+                    if roll < chance:
+                        time.sleep(3) # for comedic effect
+                        msg = 'much like your posting'
+            elif 'anime' in cmd:
+                chance = 0.3
+                roll = random.uniform(0,1)
+                if roll < chance:
+                    msg = "I think you mean animé."
             elif len(message.mentions) > 0:
                 print('mention detected')
                 mention = message.mentions[0]
@@ -432,7 +451,6 @@ async def on_message(message):
                     # someone is addressing us directly!
                     print("someone's talking about me")
                     # do something here
-                msg = None
 
             else:
                 # a random chance to spit out a markov chain
@@ -443,16 +461,14 @@ async def on_message(message):
                     # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
                     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
                         print('Loading corpus from %s' % serv)
-                        bot.markovchains[serv] = cm.server_chain(serv)
+                        bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
                         print('The result chain is %s units long' % len(bot.markovchains[serv]))
                         bot.corpus_last_read = time.time()
-                    msg = cm.generate_message(bot.markovchains[serv], verbose_failure=False)
-                else:
-                    msg = None
+                    msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=['END'])
 
-            if msg is not None:
-                bot.last_reply = time.time()
-                await bot.send_message(message.channel, msg)
+        if msg is not None:
+            bot.last_reply = time.time()
+            await bot.send_message(message.channel, msg)
 
         # record raw messages to corpus:
         cm.write(cmd, serv)
@@ -476,8 +492,24 @@ async def remember(ctx, *args):
         print('invalid, that command already exists!')
         return
 
-    msg = bot.cmds[serv].remember(key, tag)
+    outcome = bot.cmds[serv].remember(key, tag)
+
+    requester = get_name(ctx.message.author, to_filename(str(ctx.message.server)))
+
+    acknowledgements = ["you got it, {}.",
+                        "sure thing, {}.",
+                        "ok, {}.",
+                        "will do, {}.",
+                        "I will, {}.",
+                        "whatever you want, {}.",
+                        "if you say so, {}."]
+
+    msg = (random.choice(acknowledgements).format(requester))
+
+    if outcome is not None:
+        msg += '\n' + outcome # tell them what we forgot
     await bot.say(msg)
+
 
 @bot.command(pass_context = True)
 async def forget(ctx, key):
@@ -489,6 +521,88 @@ async def forget(ctx, key):
 
     msg = bot.cmds[serv].forget(key)
     await bot.say(msg)
+
+@bot.command(pass_context = True, aliases=['DRN'])
+async def drn(ctx):
+    def d6():
+        return random.randint(1,6)
+
+    print('I heard:\n%s' % ctx.message.content)
+    if ctx.message.content == '.drn':
+        num_to_roll = 1
+    else:
+        num_to_roll = 2
+
+    rolls = 0
+
+    cumtotal = 0
+    while rolls < num_to_roll:
+        roll = d6()
+        print('rolled %d' % roll)
+        cumtotal += roll
+
+        if roll == 6:
+            num_to_roll += 1
+            cumtotal -= 1
+        rolls += 1
+
+    msg = str(cumtotal)
+    await bot.say(msg)
+
+@bot.command(pass_context = True, aliases=['RIP'])
+async def rip(ctx, *dead : str):
+
+    inp = ' '.join(dead).upper()
+
+    max_len = 40
+
+    if len(inp) < 5:
+        switch = 1
+        while len(inp) < 5:
+            if switch == 1:
+                inp += ' '
+                switch *= -1
+            else:
+                inp = ' ' + inp
+                switch *= -1
+        inplen = len(inp)
+        stone_innerlen = inplen + 2
+        stone_toplen = inplen - 2
+        inputlist = [inp]
+    elif len(inp) > max_len:
+        inputlist = []
+        while len(inp) > max_len:
+            inputlist.append(inp[:max_len])
+            inp = inp[max_len:]
+        inputlist.append(inp + (' ' * (max_len - len(inp))))
+        stone_innerlen = max_len + 2
+        stone_toplen = max_len - 2
+        inplen = max_len
+    else:
+        inplen = len(inp)
+        stone_innerlen = inplen + 2
+        stone_toplen = inplen - 2
+        inputlist = [inp]
+
+    topline = '**``` _.' + ('-' * stone_toplen) + '._ '
+    lines = [topline]
+
+    rip_space = (inplen-1) / 2
+    rip_lspace = int(math.floor(rip_space))
+    rip_rspace = int(math.ceil(rip_space))
+
+    ripline = '|' + (' '*rip_lspace) + 'RIP' + (' ' * rip_rspace) + '|'
+
+    lines.append(ripline)
+    lines.append('|' + (' '*stone_innerlen) + '|')
+
+    for inp in inputlist:
+        lines.append('| ' + inp + ' |')
+
+    lines.append('|' + (' '*stone_innerlen) + '|')
+    lines.append('|' + ('_'*stone_innerlen) + '|```**')
+
+    await bot.say('\n'.join(lines))
 
 @bot.event
 async def on_command_error(error, ctx):
@@ -505,12 +619,23 @@ async def on_command_error(error, ctx):
             print('I remember this one:')
             print(bot.cmds[serv].recall(cmd))
             recall = bot.cmds[serv].recall(cmd)
-            await bot.send_message(ctx.message.channel, f'{cmd}: {recall}')
+            await bot.send_message(ctx.message.channel, f'{recall}')
 
         else:
             print('nobody has set that command!')
     else:
         print('===bot error:\n%s' % error)
+
+@bot.command(pass_context = True, aliases=['list', 'what'])
+async def womble(ctx):
+    serv = to_filename(str(ctx.message.server))
+    if serv not in bot.cmds:
+        bot.cmds[serv] = mm.MemBank(serv)
+
+    #print(bot.cmds[serv].memories)
+    memories = [x for x in bot.cmds[serv].memories.keys()]
+    msg = ', '.join(memories)
+    await bot.say(msg)
 
 
 @bot.command(pass_context = True)
@@ -531,6 +656,7 @@ async def help(ctx):
 
 .remember <cmd> <content>: Remembers a command to be used in the future.
 .<cmd>: Recall the content of a command.
+.list: Display the commands that are currently memorised for this server.
 
 .request <feature>: Request a new feature.
 
@@ -566,9 +692,19 @@ async def loadmarkov(ctx, servername):
     bot.corpus_last_read = time.time()
 
 @bot.command(pass_context = True)
-async def serv_markov(ctx, servername):
+async def servmarkov(ctx, servername):
     serv = to_filename(servername)
     seed = ['END']
+
+    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
+        print('Loading corpus from %s' % serv)
+        bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
+        print('Chain1: %s units long' % len(bot.markovchains[serv]))
+        print('Chain2: %s units long' % len(bot.markovchains2[serv]))
+        bot.corpus_last_read = time.time()
+    else:
+        print('Corpus is freshly loaded!')
+
     print('making a markov chain from server corpus: %s and seed: %s' % (serv, str(seed)))
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
     print('made a 2nd order markov chain:\n%s' % msg)

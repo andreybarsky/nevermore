@@ -24,7 +24,7 @@ def qparse(msg, user):
             print(l)
             new_user = l.split(' - Today')[0]
             new_user = new_user.replace('BOT', '') # strip out BOT tag
-            newline = new_user + ": "
+            newline = '<%s>' % new_user
             print('newline is:')
             print(newline)
         elif 'NEW MESSAGES' in l:

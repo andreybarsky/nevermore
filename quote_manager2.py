@@ -87,7 +87,7 @@ class QuoteBank(object):
                 q = self.users[lusername][idx]
                 idx = (nquotes)+idx+1 # for formatting, we dont want to show -1
 
-        out = "[{i}/{n}] ({t})\n{u}: {q}"
+        out = "[{i}/{n}] ({t})\n<{u}> {q}"
         return out.format(u=username, t=q.time, i=idx, n=nquotes, q =q.text)
 
     def allquote(self, *place_arg):
@@ -104,7 +104,7 @@ class QuoteBank(object):
             quotes = self.users[user]
             for q in quotes:
                 if q.number == place:
-                    out = "[{i}/{n}] ({t})\n{u}: {q}"
+                    out = "[{i}/{n}] ({t})\n<{u}> {q}"
                     return out.format(u=user, t=q.time, i=place, n=self.numquotes, q=q.text)
 
     def from_xml(self, filename=None):
@@ -153,7 +153,7 @@ class QuoteBank(object):
                     self.users[user] = [Quote(text, stamp, int(num))]
                 i += 1
 
-        self.numquotes = i
+        self.numquotes = int(num)
 
     def count_quotes(self):
         q = 0

@@ -26,12 +26,12 @@ class MemBank(object):
             self.from_xml(self.filename)
 
     def remember(self, key, val):
-        msg = ''
+        msg = None
         if key in list(self.memories.keys()):
-            msg += f'Forgetting {key}: {self.memories[key]}\n'
+            msg = f'Forgetting {key}: {self.memories[key]}\n'
         self.memories[key] = val
         self.to_xml()
-        msg += f'{key}: {val}'
+        # msg += f'Remembering {key}'
         return msg
 
     def recall(self, key):

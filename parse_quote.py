@@ -15,7 +15,7 @@ def qparse(msg, user):
     for l in lines:
         if 'Today at' in l:
             new_user = l.split(' - Today')[0]
-            newline = new_user + ": "
+            newline = '<' + new_user + "> "
         elif 'NEW MESSAGES' in l:
             pass
         else:

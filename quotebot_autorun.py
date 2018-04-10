@@ -25,6 +25,7 @@ if not is_lock_free():
     sys.exit()
 
 os.chdir('/home/doubtfulguest/nevermore/')
+sys.stdout.flush()
 
 from quotebot import main
 logging.info('Running quotebot...')
