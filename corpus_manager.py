@@ -100,7 +100,8 @@ def generate_message(chain, seed=['END'], count=100, verbose_failure=True):
 
         attempts += 1
 
-        finalmessage = message.replace('END', '')
+        finalmessage = message.replace('&&newline', '\n')
+        finalmessage = finalmessage.replace('END', '')
 
     if attempts == 50:
         if verbose_failure:
@@ -177,6 +178,7 @@ def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempt
             wordkey = (wordkey[1], next_word)
         finalmessage = message.replace('END', '')
         finalmessage = finalmessage.replace('  ', ' ')
+        finalmessage = finalmessage.replace('&&newline', '\n')
 
         if attempt > max_attempts:
             return failure

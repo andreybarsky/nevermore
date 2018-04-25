@@ -68,3 +68,6 @@ jsoh: .request make the robot actually do markov things
 jsoh: .request make .in start a markov chain starting with *in please
 jsoh: .request make  .q not require a index so i can pull quotes interdimensionally
 Boing: .request automatic noun detection
+Absum: .request the .seen function
+jsoh: .request .name but trump tweets instead of Kevin
+Prey: .request make filthincarnate taggable

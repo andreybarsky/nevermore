@@ -417,13 +417,13 @@ async def on_message(message):
                 greeting = random.choice(['hi', 'hello'])
                 msg = '%s %s' % (greeting, name)
             elif 'how do' in cmd and 'feel' not in cmd and len(cmd) < 100: # we want "how do", but not "how do i/you feel"
-                chance = 0.25
+                chance = 0.15
                 roll = random.uniform(0, 1)
                 if roll < chance:
                     time.sleep(3) # for comedic effect
                     msg = 'very carefully.'
             elif 'my wife' in cmd:
-                msg = 'MY WIFE.'
+                msg = 'My Wife'
             elif 'so bad' in cmd or 'very bad' in cmd or 'really bad' in cmd or 'insanely bad' in cmd or 'incredibly bad' in cmd or 'unbelievably bad' in cmd:
                 print('I smell something bad.')
                 print('the server is: %s' % serv)
