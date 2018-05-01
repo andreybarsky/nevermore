@@ -142,18 +142,27 @@ def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempt
                     message += ' ' + new_word
     elif len(seed) == 1: # single word seed
         word1 = seed[0]
-        if word1 == 'END': # if blank seed just pick from our chain2:
-            wordkey = random.choice(list(chain2.keys()))
-            if wordkey[0] in ['.',',', '!', '?', ';']: # deal with punctuation appropriately
-                message = ''.join(wordkey)
-            else:
-                message = ' '.join(wordkey)
+        if word1 == 'END': # if blank seed, pick a starting word from chain 1:
+            valid_word = False
+            while not valid_word:
+                wordkey = (word1, random.choice(list(chain1[word1])))
+                if '<@' in wordkey[1]:  # exclude mentions
+                    valid_word = False
+                else:
+                    valid_word = True
+            message = wordkey[1]
         else: # try and start a new sentence with that word
             wordkey = ('END', word1)
             if wordkey in chain2: # new sentence
                 message = word1 # but don't include END
             elif word1 in chain1: # have we ever seen this word before
-                word2 = random.choice(chain1[word1]) # pick a random next word from 1st-order chain
+                valid_word = False
+                while not valid_word:
+                    word2 = random.choice(chain1[word1])  # pick a random next word from 1st-order chain
+                    if '<@' in word2:  # exclude mentions
+                        valid_word = False
+                    else:
+                        valid_word = True
                 wordkey = (word1, word2)
                 message = ' '.join(wordkey)
             else: # totally new word
@@ -164,18 +173,26 @@ def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempt
     print('%s exists in chain2' % str(wordkey))
     # move on to generating rest of chain
     attempt = 0
-    valid = False
-    while not valid:
+    valid_phrase = False
+    while not valid_phrase:
         message = message_so_far
         next_word = None
         while next_word != 'END':
             # print("pulling a random continuation from chain2 for %s" % str(wordkey))
-            next_word = random.choice(chain2[wordkey])
+            valid_word = False
+            while not valid_word:
+                next_word = random.choice(chain2[wordkey])
+                if '<@' in next_word: # exclude mentions
+                    valid_word = False
+                else:
+                    valid_word = True
+
             if next_word in ['.',',', '!', '?', ';']: # deal with punctuation appropriately
                 message += next_word
             else:
                 message += ' ' + next_word
             wordkey = (wordkey[1], next_word)
+        finalmessage = message.replace('END ', '')
         finalmessage = message.replace('END', '')
         finalmessage = finalmessage.replace('  ', ' ')
         finalmessage = finalmessage.replace('&&newline', '\n')
@@ -185,6 +202,6 @@ def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempt
         elif len(finalmessage) < min or len(finalmessage) > max:
             attempt += 1
         else:
-            valid = True
+            valid_phrase = True
     print('Made a markov chain:\n%s' % finalmessage)
     return finalmessage
