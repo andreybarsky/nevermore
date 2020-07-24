@@ -47,8 +47,9 @@ class TagBank(object):
         if lusername not in self.users:
             return "No tags."
         else:
-            tags = ', '.join(self.users[lusername])
-            return tags
+            valid_tags = [tag for tag in self.users[lusername] if tag is not None]
+            tags_string = ', '.join(valid_tags)
+            return tags_string
 
     def gettagged(self, tag):
         # search for inverse tags:
@@ -56,9 +57,13 @@ class TagBank(object):
         tagged = []
 
         for username in self.users:
-            these_tags = [x.lower() for x in self.users[username]]
-            if ltag in these_tags:
-                tagged.append(username)
+            try:
+                these_tags = [x.lower() for x in self.users[username] if x is not None]
+                if ltag in these_tags:
+                    tagged.append(username)
+            except Exception as e:
+                print("Problem found with tag for: %s (%s)" % (username, e))
+                print(self.users[username])
 
         if len(tagged) == 0:
             return 'nobody.'

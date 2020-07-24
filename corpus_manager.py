@@ -13,13 +13,17 @@ def write(msg, server):
     with open(filename, 'a') as f:
         f.write(msg + '\n')
 
-def server_chain(server): # create transitional probability matrix for server log
+def server_chain(server, max_lines = 300000): # create transitional probability matrix for server log
     filename = cdir + to_filename(server) + '_corpus.txt'
     with open(filename, encoding='latin-1') as f:
         corpus = f.read().lower()
 
     #remove uninteresting lines:
     lines = corpus.split('\n')
+
+    # only load the most recent fragment of corpus if it's very large:
+    if len(lines) > max_lines:
+        lines = lines[-max_lines:]
 
     newlines = []
     for x in lines:
@@ -68,7 +72,7 @@ def generate_message(chain, seed=['END'], count=100, verbose_failure=True):
     print('Making markov chain...')
     finalmessage = ""
     attempts = 0
-    while len(finalmessage) < 20 and attempts < 50:
+    while len(finalmessage) < 15 and attempts < 50:
         if len(seed) > 1:
             seedl = [x.lower() for x in seed]
             message = ' '.join(seedl)
@@ -112,7 +116,7 @@ def generate_message(chain, seed=['END'], count=100, verbose_failure=True):
         print('Made a markov chain: %s' % finalmessage)
         return finalmessage
 
-def generate_message2(chain1, chain2, seed=['END'], min=25, max=200, max_attempts=50, verbose_failure=True):
+def generate_message2(chain1, chain2, seed=['END'], min=15, max=100, max_attempts=50, verbose_failure=True):
     """Generates a 2nd order markov chain"""
     print('Making 2nd order markov chain...')
     if verbose_failure:

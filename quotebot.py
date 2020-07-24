@@ -7,6 +7,7 @@ import time
 import random
 import os
 import math
+import re
 
 import quote_manager2 as qm
 import tag_manager as tm
@@ -27,6 +28,8 @@ bot.remove_command('help')
 
 tags = tm.TagBank('discord')
 last_reply = 0
+
+MARKOV_PROC = 0.01 # 0.02 is quite high; 0.01 is quite low
 
 
 def get_name(author, serv=None):
@@ -74,17 +77,18 @@ async def on_ready():
     bot.corpus_last_read = 0
 
     bot.beaten_to_the_punch = False
+    bot.sames = 0
 
-    print([str(x) for x in bot.servers])
+    print([str(x) for x in bot.guilds])
 
 
 
 
-@bot.command(pass_context=True)
+@bot.command(pass_context=True, aliases=['quote'])
 async def q(ctx, arg1 : str = 'all', *words : str):
     """add <name> <quote>: Adds a quote to someone.
     <name> [<idx>]: Retrieves a quote from someone, optionally indexed by quote number."""
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
 
     print('server name: %s' % serv)
     quotes = qm.QuoteBank(serv)
@@ -123,12 +127,13 @@ async def q(ctx, arg1 : str = 'all', *words : str):
             ret = tags.addtag(user, 'self quoter')
             tags.to_xml()
 
-            await bot.say(msg)
+            # await bot.say(msg)
+            await ctx.send(msg)
 
         else:
             quotes.add(user, quote)
             #quotes.to_xml()
-            await bot.say('Quote added.')
+            await ctx.send('Quote added.')
 
 
     else:
@@ -163,7 +168,7 @@ async def q(ctx, arg1 : str = 'all', *words : str):
             else: # get a random quote
                 q = quotes.get(user)
 
-        await bot.say(q)
+        await ctx.send(q)
 
 @bot.command(pass_context=True)
 async def lf(ctx, user : str = 'all', *args : str):
@@ -212,7 +217,7 @@ async def lf(ctx, user : str = 'all', *args : str):
                 attempt += 1
 
     print('Got a quote: %s' % q)
-    await bot.say(q)
+    await ctx.send(q)
 
 @bot.command(pass_context=True, aliases=['name', 'god'])
 async def pretender(ctx):
@@ -230,9 +235,17 @@ async def pretender(ctx):
         else:
             attempt += 1
     if valid:
-        await bot.say(random_quote)
+        await ctx.send(random_quote)
     else:
-        await bot.say('Pro-transmasculine enslavement.')
+        await ctx.send('Pro-transmasculine enslavement.')
+
+@bot.command(pass_context=True, aliases=['broxit', 'brixit', 'braxet', 'bruxit'])
+async def brexit(ctx):
+    es = ['ϵ', 'é', 'ε', 'è']
+    xs = ['ᶍ', 'x̂', 'ӽ', '✕', 'ẍ']
+    brexit = ['b', 'r', random.choice(es), random.choice(xs), 'i', 't']
+    brexstr = ''.join(brexit)
+    await ctx.send(brexstr)
 
 @bot.command(pass_context=True)
 async def tag(ctx, user : str, *tag : str):
@@ -253,7 +266,7 @@ async def tag(ctx, user : str, *tag : str):
         tag = ' '.join(tag)  # extract string from 1-tuple
     else:
         tag = ' '.join(tag) # extract string from 1-tuple
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
 
     print('server name: %s' % serv)
     tags = tm.TagBank(serv)
@@ -265,22 +278,22 @@ async def tag(ctx, user : str, *tag : str):
         ret = tags.addtag(user, 'self tagger')
         tags.to_xml()
 
-        await bot.say(msg)
+        await ctx.send(msg)
 
     else:
         ret = tags.addtag(user, tag)
         tags.to_xml()
 
         if ret is not None: # tagbank tells us there are no tags
-            await bot.say(ret)
+            await ctx.send(ret)
         else:
             tagstring = tags.gettags(user)
-            await bot.say("%s: %s" % (user, tagstring))
+            await ctx.send("%s: %s" % (user, tagstring))
 
 @bot.command(pass_context=True)
 async def tags(ctx, *user : str):
     """<name>: Show someone's tags."""
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     user = ' '.join(user)
     print('user parsed as: %s' % user)
 
@@ -295,12 +308,12 @@ async def tags(ctx, *user : str):
 
     tags = tm.TagBank(serv)
     tagstring = tags.gettags(name)
-    await bot.say("%s: %s" % (name, tagstring))
+    await ctx.send("%s: %s" % (name, tagstring))
 
 @bot.command(pass_context=True, name='is')
 async def is_tag(ctx, user : str, *tag_question : str):
     """<name> <tag>: Is this person something?."""
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     #user = ' '.join(user)
     print('user parsed as: %s' % user)
 
@@ -322,22 +335,25 @@ async def is_tag(ctx, user : str, *tag_question : str):
         msg = 'yes'
     else:
         msg = 'no'
-    await bot.say(msg)
+    await ctx.send(msg)
+    # await bot.say(msg)
 
 
 @bot.command(pass_context = True)
 async def tagged(ctx, *tag : str):
     """<tag>: Show everyone who is tagged as this."""
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     print(tag)
     tag = ' '.join(tag)
     tags = tm.TagBank(serv)
     userstring = tags.gettagged(tag)
-    await bot.say("%s: %s" % (tag, userstring))
+    # await bot.say("%s: %s" % (tag, userstring))
+    await ctx.send("%s: %s" % (tag, userstring))
+
 
 @bot.command(pass_context = True)
 async def markov(ctx, *seed : str):
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     print('server name: %s' % serv)
 
     if len(ctx.message.mentions) > 0:
@@ -349,7 +365,7 @@ async def markov(ctx, *seed : str):
             seed = [name]
 
     # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
-    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
+    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60*8): # not loaded in last 8 hours
         print('Loading corpus from %s' % serv)
         bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
         print('Chain1: %s units long' % len(bot.markovchains[serv]))
@@ -364,11 +380,13 @@ async def markov(ctx, *seed : str):
     print('trying to make a markov chain...')
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
     if msg is not None:
-        await bot.say(msg)
+        # await bot.say(msg)
+        await ctx.send(msg)
+
 
 @bot.command(pass_context = True, name='in')
 async def markov_in(ctx):
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
         print('Loading corpus from %s' % serv)
         bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
@@ -387,7 +405,9 @@ async def markov_in(ctx):
             attempts += 1
     print('made a 2nd order markov chain with in:\n%s' % msg)
     if msg is not None:
-        await bot.say(msg)
+        # await bot.say(msg)
+        await ctx.send(msg)
+
 
 @bot.event
 async def on_message(message):
@@ -395,35 +415,59 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author != bot.user:
         cmd = message.content.lower()
-        serv = to_filename(str(message.server))
+        serv = to_filename(str(message.guild))
 
-        if 'ty bot' in cmd or 'thanks bot' in cmd or 'thanks nevermore' in cmd or 'ty nevermore' in cmd or 'thx bot' in cmd or 'thx nevermore' in cmd:
-            requester = get_name(message.author, to_filename(str(message.server)))
+
+        if cmd.lower() == 'same' or cmd.lower() == 'same.':
+                bot.sames += 1
+        else:
+            bot.sames = 0
+
+        if bot.sames >= 2:
+            time.sleep(1)
+            bot.sames=0
+            msg = 'same.'
+        # respond to thanks, ignores the timer:
+        elif 'ty bot' in cmd or 'thanks bot' in cmd or 'thanks nevermore' in cmd or 'ty nevermore' in cmd or 'thx bot' in cmd or 'thx nevermore' in cmd:
+            requester = get_name(message.author, to_filename(str(message.guild)))
             responses = ["you're welcome, {}",
                         "ur welcome, {}",
                         "no problem, {}",
                         "any time, {}",
                         "my pleasure, {}"]
             msg = (random.choice(responses).format(requester))
-        elif time.time() - bot.last_reply > 60: # 60 sec cooldown
+
+
+        # general banter with  timer:
+        elif time.time() - bot.last_reply > 2: # 60 sec cooldown
+
+            # responds to praise or blame:
             if 'bad bot' in cmd:
                 msg = ':('
             elif 'good bot' in cmd:
                 msg = ':)'
+
+            # responds to greetings:
             elif cmd in ['hello bot', 'hi bot', 'hello nevermore', 'hi nevermore']:
                 name = message.author.nick
                 if name is None:
                     name = get_name(message.author, serv)
                 greeting = random.choice(['hi', 'hello'])
                 msg = '%s %s' % (greeting, name)
+
+            # make the 'very carefully' joke:
             elif 'how do' in cmd and 'feel' not in cmd and len(cmd) < 100: # we want "how do", but not "how do i/you feel"
                 chance = 0.15
                 roll = random.uniform(0, 1)
                 if roll < chance:
                     time.sleep(3) # for comedic effect
                     msg = 'very carefully.'
+
+            # make fun of your wife:
             elif 'my wife' in cmd:
                 msg = 'My Wife'
+
+            # make the 'much like your posting' joke:
             elif 'so bad' in cmd or 'very bad' in cmd or 'really bad' in cmd or 'insanely bad' in cmd or 'incredibly bad' in cmd or 'unbelievably bad' in cmd:
                 print('I smell something bad.')
                 print('the server is: %s' % serv)
@@ -436,13 +480,17 @@ async def on_message(message):
                     roll = random.uniform(0, 1)
                     print('The roll is: %s' % roll)
                     if roll < chance:
-                        time.sleep(3) # for comedic effect
+                        time.sleep(5) # for comedic effect
                         msg = 'much like your posting'
+
+            # correct anime spelling:
             elif 'anime' in cmd:
-                chance = 0.3
+                chance = 0.35
                 roll = random.uniform(0,1)
                 if roll < chance:
                     msg = "I think you mean animé."
+
+            # detect mentions (but does not currently do anything):
             elif len(message.mentions) > 0:
                 print('mention detected')
                 mention = message.mentions[0]
@@ -453,22 +501,35 @@ async def on_message(message):
                     # do something here
 
             else:
-                # a random chance to spit out a markov chain
-                chance = 0.02
-                roll = random.uniform(0,1)
-                print('Random markov roll: %.2f' % roll)
-                if roll < chance and cmd[0] != '.': # don't do this for bot commands
-                    # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
-                    if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
-                        print('Loading corpus from %s' % serv)
-                        bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
-                        print('The result chain is %s units long' % len(bot.markovchains[serv]))
-                        bot.corpus_last_read = time.time()
-                    msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=['END'])
+                # respond to 69:
+                pattern = r"\b6 ?9\b"
+                r = re.compile(pattern)
+                if r.search(cmd) or 'sixty nine' in cmd:
+                    print(cmd + '?\nnice')
+                    chance = 0.25
+                    roll = random.uniform(0,1)
+                    if roll < chance:
+                        time.sleep(5) # for comedic effect
+                        msg = 'nice.'
+                else:
+
+                    # a random chance to spit out a markov chain
+                    chance = MARKOV_PROC
+                    roll = random.uniform(0,1)
+                    print('Random markov roll: %.2f' % roll)
+                    if roll < chance and cmd[0] != '.': # don't do this for bot commands
+                        # if we haven't loaded the chain for this server, or if we haven't loaded one in a while:
+                        if serv not in bot.markovchains or time.time() - bot.corpus_last_read > (60*60):
+                            print('Loading corpus from %s' % serv)
+                            bot.markovchains[serv], bot.markovchains2[serv] = cm.server_chain(serv)
+                            print('The result chain is %s units long' % len(bot.markovchains[serv]))
+                            bot.corpus_last_read = time.time()
+                        msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=['END'])
 
         if msg is not None:
             bot.last_reply = time.time()
-            await bot.send_message(message.channel, msg)
+            # await bot.send_message(message.channel, msg)
+            await message.channel.send(msg)
 
         # record raw messages to corpus:
         cm.write(cmd, serv)
@@ -483,7 +544,7 @@ async def remember(ctx, *args):
 
     if key[0] == '.': # in case someone types the dot for the tag
         key = tag[1:]
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     if serv not in bot.cmds: # load the xml:
         bot.cmds[serv] = mm.MemBank(serv)
 
@@ -494,7 +555,7 @@ async def remember(ctx, *args):
 
     outcome = bot.cmds[serv].remember(key, tag)
 
-    requester = get_name(ctx.message.author, to_filename(str(ctx.message.server)))
+    requester = get_name(ctx.message.author, to_filename(str(ctx.message.guild)))
 
     acknowledgements = ["you got it, {}.",
                         "sure thing, {}.",
@@ -508,19 +569,21 @@ async def remember(ctx, *args):
 
     if outcome is not None:
         msg += '\n' + outcome # tell them what we forgot
-    await bot.say(msg)
+    # await bot.say(msg)
+    await ctx.send(msg)
 
 
 @bot.command(pass_context = True)
 async def forget(ctx, key):
     key = key.lower()
     print(f'Forgetting {key}')
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     if serv not in bot.cmds: # load the xml:
         bot.cmds[serv] = mm.MemBank(serv)
 
     msg = bot.cmds[serv].forget(key)
-    await bot.say(msg)
+    # await bot.say(msg)
+    await ctx.send(msg)
 
 @bot.command(pass_context = True, aliases=['DRN'])
 async def drn(ctx):
@@ -547,7 +610,8 @@ async def drn(ctx):
         rolls += 1
 
     msg = str(cumtotal)
-    await bot.say(msg)
+    # await bot.say(msg)
+    await ctx.send(msg)
 
 @bot.command(pass_context = True, aliases=['RIP'])
 async def rip(ctx, *dead : str):
@@ -602,15 +666,17 @@ async def rip(ctx, *dead : str):
     lines.append('|' + (' '*stone_innerlen) + '|')
     lines.append('|' + ('_'*stone_innerlen) + '|```**')
 
-    await bot.say('\n'.join(lines))
+    # await bot.say('\n'.join(lines))
+    await ctx.send('\n'.join(lines))
 
 @bot.event
-async def on_command_error(error, ctx):
+async def on_command_error(ctx, error):
+
     # this is a MASSIVE hack but it is how we allow users to set new commands dynamically
     if isinstance(error, commands.CommandNotFound):
         # recall from cmds:
 
-        serv = to_filename(str(ctx.message.server))
+        serv = to_filename(str(ctx.message.guild))
         if serv not in bot.cmds:
             bot.cmds[serv] = mm.MemBank(serv)
 
@@ -619,7 +685,9 @@ async def on_command_error(error, ctx):
             print('I remember this one:')
             print(bot.cmds[serv].recall(cmd))
             recall = bot.cmds[serv].recall(cmd)
-            await bot.send_message(ctx.message.channel, f'{recall}')
+            # await ctx.send(recall)
+            await ctx.message.channel.send(recall)
+            # await bot.send_message(ctx.message.channel, f'{recall}')
 
         else:
             print('nobody has set that command!')
@@ -628,14 +696,22 @@ async def on_command_error(error, ctx):
 
 @bot.command(pass_context = True, aliases=['list', 'what'])
 async def womble(ctx):
-    serv = to_filename(str(ctx.message.server))
+    serv = to_filename(str(ctx.message.guild))
     if serv not in bot.cmds:
         bot.cmds[serv] = mm.MemBank(serv)
 
     #print(bot.cmds[serv].memories)
     memories = [x for x in bot.cmds[serv].memories.keys()]
     msg = ', '.join(memories)
-    await bot.say(msg)
+    # await bot.say(msg)
+    await ctx.send(msg)
+
+@bot.command(pass_context = True, aliases=['wiki', 'w'])
+async def wikipedia(ctx, *terms:str):
+    term_str = '_'.join(terms)
+    msg = ('https://en.wikipedia.org/wiki/%s' % term_str)
+    # await bot.say(msg)
+    await ctx.send(msg)
 
 
 @bot.command(pass_context = True)
@@ -661,11 +737,13 @@ async def help(ctx):
 .request <feature>: Request a new feature.
 
 """
-    await bot.say(helpstr)
+    # await bot.say(helpstr)
+    await ctx.send(helpstr)
+
 
 @bot.command(pass_context = True)
 async def request(ctx, *words):
-    requester = get_name(ctx.message.author, to_filename(str(ctx.message.server)))
+    requester = get_name(ctx.message.author, to_filename(str(ctx.message.guild)))
     real_name = get_name(ctx.message.author, None)
     filename = 'feature_requests.txt'
     msg = ctx.message.content
@@ -680,7 +758,15 @@ async def request(ctx, *words):
                         "I like the sound of that, {}.",
                         "why would you want that, {}."]
 
-    await bot.say(random.choice(acknowledgements).format(requester))
+    await ctx.send(random.choice(acknowledgements).format(requester))
+
+@bot.command(pass_context = True)
+async def length(ctx, *words):
+    msg = ' '.join(words)
+    length = len(msg)
+    too = ' (too long)' if length > 33 else ''
+    reply = str(length) + too
+    await ctx.send(reply)
 
 @bot.command(pass_context = True)
 async def loadmarkov(ctx, servername):
@@ -709,7 +795,7 @@ async def servmarkov(ctx, servername):
     msg = cm.generate_message2(bot.markovchains[serv], bot.markovchains2[serv], seed=seed)
     print('made a 2nd order markov chain:\n%s' % msg)
     if msg is not None:
-        await bot.say(msg)
+        await ctx.send(msg)
 
 
 def main():

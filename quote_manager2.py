@@ -153,7 +153,10 @@ class QuoteBank(object):
                     self.users[user] = [Quote(text, stamp, int(num))]
                 i += 1
 
-        self.numquotes = int(num)
+        try:
+            self.numquotes = int(num)
+        except:
+            self.numquotes = 0
 
     def count_quotes(self):
         q = 0
